@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gspdt/constants/strings.dart';
 import 'package:gspdt/constants/text_styles.dart';
+import 'package:gspdt/pages/konstruksi/konstruksi_page.dart';
+import 'package:gspdt/pages/outsourcing/outsourcing_page.dart';
+import 'package:gspdt/pages/portofolio/portofolio_page.dart';
 import 'package:gspdt/pages/yaumi/yaumi_page.dart';
 
 class DesktopNavigation extends StatefulWidget {
@@ -43,6 +46,7 @@ class _DesktopNavigationState extends State<DesktopNavigation> {
 
                 //portfolio
                 InkWell(
+                  onTap: () => Get.to(() => PortofolioPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [Text('Portofolio')],
@@ -51,6 +55,7 @@ class _DesktopNavigationState extends State<DesktopNavigation> {
 
                 //Construction Project
                 InkWell(
+                  onTap: () => Get.to(() => KonstruksiPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [Text('Proyek Konstruksi')],
@@ -59,6 +64,7 @@ class _DesktopNavigationState extends State<DesktopNavigation> {
 
                 //outsourcing
                 InkWell(
+                  onTap: () => Get.to(() => OutsourcingPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [Text('Outsourcing')],
