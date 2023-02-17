@@ -6,7 +6,7 @@ class TextStyles {
 
   static TextStyle get logo => const TextStyle(
         fontFamily: Fonts.product,
-        color: Color(0xFF45405B),
+        color: Color.fromARGB(255, 189, 187, 199),
         fontSize: 22.0, //22.0
         fontWeight: FontWeight.bold,
         letterSpacing: 1.0,

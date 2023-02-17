@@ -22,4 +22,14 @@ class Strings {
 
   //GSP
   static const String globalSolutionProvider = 'Global Solution Provider';
+  static const String companyResumeTitle =
+      'Global Solution Provider Menawarkan Jasa di dalam Bidang Konstruksi dan Outsourcing';
+  static const String companyResume1 =
+      'Sebagai sebuah perusahaan yang saat ini sedang terus berkembang di bidang pembangunan, PT. Global Solution Provider mulai melanjutkan untuk mengimplementasikan sayap usahanya di bidang perencanaan arsitektur, struktur dan MEP selain bertindak sebagai pelaksana pembangunan dengan cara melakukan pengembangan di bidang perencaan ini perusahaan kami dapat memperluas kerja sama bidang properti baik sebagai developer, jasa pembangunan dan juga kontraktor.';
+  static const String companyResume2 =
+      'Pertumbuhan perusahaan PT. GSP terus berkembang, oleh karena itu dibutuhkan dukungan dari perusahaan, sehingga ditahun 2019 manajemen menyempurnakan infrastruktur organisasi dengan melengkapi struktur pada unit-unit usaha.';
+  static const String companyResume3 =
+      'Selain itu untuk meningkatkan efektifitas organisasi dalam meningkatkan pertumbuhan Usaha ditahun 2019 akan diimplementasikan.';
+  static const String hadith1 =
+      '“Barangsiapa yang di waktu sore merasa capek (lelah) lantaran pekerjaan kedua tangannya (mencari nafkah) maka di saat itu diampuni dosa baginya.” (HR.Thabrani)';
 }
