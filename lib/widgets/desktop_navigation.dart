@@ -41,7 +41,7 @@ class _DesktopNavigationState extends State<DesktopNavigation> {
               children: [
                 //home
                 InkWell(
-                  onHover: (value) => _deskNavController.isOnHover[0],
+                  onHover: (value) => _deskNavController.isOnHover[0] = value,
                   onTap: () => Get.off(() => const Home()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,45 +70,116 @@ class _DesktopNavigationState extends State<DesktopNavigation> {
 
                 //portfolio
                 InkWell(
-                  onTap: () => Get.to(() => PortofolioPage()),
+                  onHover: (value) => _deskNavController.isOnHover[1] = value,
+                  onTap: () => Get.to(() => const PortofolioPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Portofolio', style: TextStyle(color: Colors.white))
+                    children: [
+                      const Text('Portofolio',
+                          style: TextStyle(color: Colors.white)),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Obx(
+                        () => Visibility(
+                          maintainAnimation: true,
+                          maintainState: true,
+                          maintainSize: true,
+                          visible: _deskNavController.isOnHover[1],
+                          child: Container(
+                            width: 35.0,
+                            height: 5.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
 
                 //Construction Project
                 InkWell(
-                  onTap: () => Get.to(() => KonstruksiPage()),
+                  onHover: (value) => _deskNavController.isOnHover[2] = value,
+                  onTap: () => Get.to(() => const KonstruksiPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Proyek Konstruksi',
-                          style: TextStyle(color: Colors.white))
+                    children: [
+                      const Text('Proyek Konstruksi',
+                          style: TextStyle(color: Colors.white)),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Obx(
+                        () => Visibility(
+                          maintainAnimation: true,
+                          maintainState: true,
+                          maintainSize: true,
+                          visible: _deskNavController.isOnHover[2],
+                          child: Container(
+                            width: 35.0,
+                            height: 5.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
 
                 //outsourcing
                 InkWell(
-                  onTap: () => Get.to(() => OutsourcingPage()),
+                  onHover: (value) => _deskNavController.isOnHover[3] = value,
+                  onTap: () => Get.to(() => const OutsourcingPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Outsourcing', style: TextStyle(color: Colors.white))
+                    children: [
+                      const Text('Outsourcing',
+                          style: TextStyle(color: Colors.white)),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Obx(
+                        () => Visibility(
+                          maintainAnimation: true,
+                          maintainState: true,
+                          maintainSize: true,
+                          visible: _deskNavController.isOnHover[3],
+                          child: Container(
+                            width: 35.0,
+                            height: 5.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
 
                 //Yaumi
                 InkWell(
-                  onTap: () => Get.to(() => YaumiPage()),
+                  onHover: (value) => _deskNavController.isOnHover[4] = value,
+                  onTap: () => Get.to(() => const YaumiPage()),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Text('Yaumi', style: TextStyle(color: Colors.white))
+                    children: [
+                      const Text('Yaumi',
+                          style: TextStyle(color: Colors.white)),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Obx(
+                        () => Visibility(
+                          maintainAnimation: true,
+                          maintainState: true,
+                          maintainSize: true,
+                          visible: _deskNavController.isOnHover[4],
+                          child: Container(
+                            width: 35.0,
+                            height: 5.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

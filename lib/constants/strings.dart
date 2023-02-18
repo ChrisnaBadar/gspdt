@@ -22,6 +22,8 @@ class Strings {
 
   //GSP
   static const String globalSolutionProvider = 'Global Solution Provider';
+  static const String alamat =
+      'Pondok Pesantren Daarut Tauhiid Bandung, Jl. Gegerkalong Girang Baru No. 4, Bandung Jawa Barat';
   static const String companyResumeTitle =
       'Global Solution Provider Menawarkan Jasa di dalam Bidang Konstruksi dan Outsourcing';
   static const String companyResume1 =
