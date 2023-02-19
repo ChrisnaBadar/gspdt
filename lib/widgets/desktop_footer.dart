@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gspdt/constants/strings.dart';
+import 'package:gspdt/pages/policies/privacy_policy_page.dart';
 
 class DesktopFooter extends StatelessWidget {
   const DesktopFooter({super.key});
@@ -107,8 +109,10 @@ class DesktopFooter extends StatelessWidget {
               flex: 3,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +153,7 @@ class DesktopFooter extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        width: 16.0,
+                        width: 32.0,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,7 +168,8 @@ class DesktopFooter extends StatelessWidget {
                             height: 16.0,
                           ),
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () =>
+                                  Get.to(() => const PrivacyPolicyPage()),
                               child: const Text('Privacy Policy')),
                           const SizedBox(
                             height: 8.0,
@@ -186,6 +191,11 @@ class DesktopFooter extends StatelessWidget {
                         ],
                       )
                     ],
+                  ),
+                  Text(
+                    'This website powered by Zatunr Studio which is a digital software developer domiciled in Indonesia. All rights reserved to the developer.',
+                    style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(color: Colors.white)),
                   )
                 ],
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gspdt/constants/fonts.dart';
 
 class TextStyles {
@@ -29,8 +30,8 @@ class TextStyles {
 
   static TextStyle get subHeading => const TextStyle(
         color: Color(0xFF45405B),
-        fontFamily: Fonts.product,
         fontSize: 17.0, //17.0
+        fontWeight: FontWeight.bold,
         letterSpacing: 1.2,
       );
 
@@ -43,7 +44,6 @@ class TextStyles {
       );
 
   static TextStyle get body => const TextStyle(
-        fontFamily: Fonts.product,
         color: Color(0xFF85819C),
         height: 1.5,
         fontSize: 12.0, //12.0
