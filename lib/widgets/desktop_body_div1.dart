@@ -26,7 +26,7 @@ class DesktopBodyDiv1 extends StatelessWidget {
                 const TextSpan(
                     text: ' SOLUTION ',
                     style:
-                        TextStyle(color: Color.fromARGB(255, 112, 187, 249))),
+                        TextStyle(color: Color.fromARGB(255, 111, 176, 229))),
                 const TextSpan(
                     text: 'PROVIDER', style: TextStyle(color: Colors.white)),
                 TextSpan(
