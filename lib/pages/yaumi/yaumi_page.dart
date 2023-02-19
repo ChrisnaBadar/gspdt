@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gspdt/pages/underConstruct/underconstruction.dart';
 
 class YaumiPage extends StatefulWidget {
   const YaumiPage({super.key});
@@ -10,10 +11,6 @@ class YaumiPage extends StatefulWidget {
 class _YaumiPageState extends State<YaumiPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text('YAUMI'),
-      ),
-    );
+    return const Underconstruction();
   }
 }

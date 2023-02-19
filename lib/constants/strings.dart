@@ -60,4 +60,11 @@ class Strings {
   static const String policyh7 = 'Consent\n\n';
   static const String policyp7 =
       'By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.\n\n';
+
+  static const String konstruksiResume =
+      'Global Solution Provider ahli dalam memberikan pelanggan konstruksi rumah berkualitas tinggi dan hasil akhir yang sesuai dengan anggaran dan memenuhi persyaratan pelanggan.';
+  static const String outsourcingResume =
+      'Global Solution Provider menyediakan tenaga ahli dalam bidang cleaning service untuk gedung-gedung perkantoran, pendidikan, rumah sakit, komersil dan masjid.';
+  static const String consultantResume =
+      'Global Solution Provider memberikan jasa konsultasi perencanaan dan pembangunan gedung perkantoran, pendidikan, komersil dan perumahan. bidang ini bekerja sama dengan CV. Bersama.';
 }

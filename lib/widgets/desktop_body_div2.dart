@@ -89,7 +89,18 @@ class _DesktopBodyDiv2State extends State<DesktopBodyDiv2> {
                       maintainSize: true,
                       visible: _homeController.isOnHover[0],
                       child: Container(
+                        alignment: Alignment.center,
                         color: Colors.blueGrey[700],
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            Strings.konstruksiResume,
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.roboto(
+                                textStyle:
+                                    const TextStyle(color: Colors.white)),
+                          ),
+                        ),
                       ),
                     ),
                   )
@@ -127,7 +138,14 @@ class _DesktopBodyDiv2State extends State<DesktopBodyDiv2> {
                       maintainSize: true,
                       visible: _homeController.isOnHover[1],
                       child: Container(
+                        alignment: Alignment.center,
                         color: Colors.blueGrey[700],
+                        child: Text(
+                          Strings.outsourcingResume,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(color: Colors.white)),
+                        ),
                       ),
                     ),
                   )
@@ -165,7 +183,14 @@ class _DesktopBodyDiv2State extends State<DesktopBodyDiv2> {
                       maintainSize: true,
                       visible: _homeController.isOnHover[2],
                       child: Container(
+                        alignment: Alignment.center,
                         color: Colors.blueGrey[700],
+                        child: Text(
+                          Strings.consultantResume,
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.roboto(
+                              textStyle: const TextStyle(color: Colors.white)),
+                        ),
                       ),
                     ),
                   )

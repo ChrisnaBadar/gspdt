@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gspdt/pages/underConstruct/underconstruction.dart';
 
 class PortofolioPage extends StatefulWidget {
   const PortofolioPage({super.key});
@@ -10,6 +11,6 @@ class PortofolioPage extends StatefulWidget {
 class _PortofolioPageState extends State<PortofolioPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Underconstruction();
   }
 }
