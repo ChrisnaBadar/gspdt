@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Widget projectDetailsWorkers(BuildContext context) {
   final boxWidth = MediaQuery.of(context).size.width * .4;
-  return Container(
-    width: boxWidth,
-    decoration: BoxDecoration(
-        border: Border.all(
-            width: 2.0, color: const Color.fromARGB(255, 177, 187, 193)),
-        borderRadius: const BorderRadius.all(Radius.circular(10.0))),
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          //Main Workers
-          _mainWorkers(myWidth: boxWidth, pm: 1, sm: 2, pel: 5),
+  return Card(
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+    child: SizedBox(
+      width: boxWidth,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            //Main Workers
+            _mainWorkers(myWidth: boxWidth, pm: 1, sm: 2, pel: 5),
 
-          //SEPARATOR
-          const SizedBox(
-            width: 8.0,
-          ),
-          Container(
-            width: 2.0,
-            height: 100.0,
-            color: Colors.blueGrey[100],
-          ),
-          const SizedBox(
-            width: 8.0,
-          ),
+            //SEPARATOR
+            const SizedBox(
+              width: 8.0,
+            ),
+            Container(
+              width: 2.0,
+              height: 100.0,
+              color: Colors.blueGrey[100],
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
 
-          //FieldWorkers
-          _fieldWorkers(myWidth: boxWidth, adm: 1, mand: 1, tuk: 15, lad: 12)
-        ],
+            //FieldWorkers
+            _fieldWorkers(myWidth: boxWidth, adm: 1, mand: 1, tuk: 15, lad: 12)
+          ],
+        ),
       ),
     ),
   );
@@ -78,7 +78,14 @@ Widget _mainWorkers({double? myWidth, int? pm, int? sm, int? pel}) {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const CircleAvatar(),
+                      Icon(
+                        FontAwesomeIcons.helmetSafety,
+                        color: index == 0
+                            ? Colors.white
+                            : index == 1
+                                ? Colors.blue
+                                : Colors.yellow,
+                      ),
                       const SizedBox(
                         height: 8.0,
                       ),

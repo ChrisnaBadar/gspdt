@@ -6,9 +6,16 @@ Widget listOfProjects() {
   return Expanded(
     flex: 1,
     child: Container(
-      color: Colors.blueGrey[100],
+      color: const Color.fromARGB(255, 37, 37, 37),
       child: Column(
-        children: [listOfProjectsHeader(), listOfProjectsBody()],
+        children: [
+          listOfProjectsHeader(),
+          Container(
+            color: const Color.fromARGB(255, 195, 195, 195),
+            height: 2.0,
+          ),
+          listOfProjectsBody()
+        ],
       ),
     ),
   );

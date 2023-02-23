@@ -15,8 +15,16 @@ class _KonstruksiPageState extends State<KonstruksiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 248, 247, 243),
       body: Row(
-        children: [listOfProjects(), projectDetails(context)],
+        children: [
+          listOfProjects(),
+          Container(
+            color: const Color.fromARGB(255, 195, 195, 195),
+            width: 2.0,
+          ),
+          projectDetails(context)
+        ],
       ),
     );
   }

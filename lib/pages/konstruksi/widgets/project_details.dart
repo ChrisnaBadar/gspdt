@@ -4,15 +4,15 @@ import 'package:gspdt/pages/konstruksi/widgets/project_details_header.dart';
 
 Widget projectDetails(BuildContext context) {
   return Expanded(
-    flex: 3,
+    flex: 4,
     child: Column(
       children: [
         //header
         ProjectDetailsHeader(),
         //separator
         Container(
-          height: 1.0,
-          color: Colors.blueGrey[200],
+          color: const Color.fromARGB(255, 195, 195, 195),
+          height: 2.0,
         ),
 
         //body

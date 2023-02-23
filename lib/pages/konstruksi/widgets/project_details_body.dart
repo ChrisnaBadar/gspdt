@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gspdt/pages/konstruksi/widgets/project_details_activity.dart';
 import 'package:gspdt/pages/konstruksi/widgets/project_details_date.dart';
+import 'package:gspdt/pages/konstruksi/widgets/project_details_problems.dart';
 import 'package:gspdt/pages/konstruksi/widgets/project_details_title_description.dart';
 import 'package:gspdt/pages/konstruksi/widgets/project_details_wheater.dart';
 import 'package:gspdt/pages/konstruksi/widgets/project_details_workers.dart';
@@ -27,7 +28,16 @@ Widget projectDetailsBody(BuildContext context) {
             projectDetailsWheater(),
 
             //workers
-            projectDetailsWorkers(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                projectDetailsWorkers(context),
+                const SizedBox(
+                  width: 16.0,
+                ),
+                projectDetailsProblems(context)
+              ],
+            ),
 
             //activity
             projectDetailsActivity(context)
