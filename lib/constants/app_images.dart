@@ -27,4 +27,14 @@ class AppImages {
 
   //BLOG IMAGES
   static const String BUILDING_CRACKS = "$imageDir/building_cracks.jpg";
+
+  //BANNERS
+  static const String BANNER_1 = "$imageDir/banner_1.png";
+  static const String BANNER_2 = "$imageDir/banner_2.png";
+  static const String BANNER_3 = "$imageDir/banner_3.png";
+  static const String BANNER_4 = "$imageDir/banner_4.png";
+  static const String BANNER_5 = "$imageDir/banner_5.png";
+  static const String BANNER_6 = "$imageDir/banner_6.png";
+  static const String BANNER_7 = "$imageDir/banner_7.png";
+  static const String BANNER_8 = "$imageDir/banner_8.png";
 }

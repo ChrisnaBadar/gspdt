@@ -1,4 +1,5 @@
 import 'package:gspdt/constants/constants.dart';
+import 'package:gspdt/pages/projects/projects_details.dart';
 
 class OurProjectsSection extends StatelessWidget {
   const OurProjectsSection({super.key});
@@ -14,16 +15,20 @@ class OurProjectsSection extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: isDesktop
                   ? desktopTitleAndDesc(
-                      screenWidth: screenWidth, isDesktop: true)
+                      screenWidth: screenWidth,
+                      isDesktop: true,
+                      context: context)
                   : desktopTitleAndDesc(
-                      screenWidth: screenWidth, isDesktop: false),
+                      screenWidth: screenWidth,
+                      isDesktop: false,
+                      context: context),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -44,7 +49,19 @@ class OurProjectsSection extends StatelessWidget {
                   (index) => StaggeredGridTile.count(
                     crossAxisCellCount: 1,
                     mainAxisCellCount: 1,
-                    child: ProjectCard(index),
+                    child: InkWell(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ProjectDetails(
+                              dataProject:
+                                  DataProjects.myProjectsList['NAME']![index]),
+                        ),
+                      ),
+                      child: ProjectCard(
+                        dataProject:
+                            DataProjects.myProjectsList['NAME']![index],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -57,7 +74,9 @@ class OurProjectsSection extends StatelessWidget {
 }
 
 Widget desktopTitleAndDesc(
-    {required double screenWidth, required bool isDesktop}) {
+    {required double screenWidth,
+    required bool isDesktop,
+    required BuildContext context}) {
   return isDesktop
       ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -67,7 +86,7 @@ Widget desktopTitleAndDesc(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // TITLE
-                SelectableText(
+                const SelectableText(
                   AppStrings.PROJECTS,
                   style: TextStyle(
                     fontSize: 32.0,
@@ -75,13 +94,13 @@ Widget desktopTitleAndDesc(
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16.0,
                 ),
                 // DESCRIPTION
                 SizedBox(
                   width: screenWidth - 350,
-                  child: SelectableText(
+                  child: const SelectableText(
                     AppStrings.PROJECTS_OVERVIEW_DESCRIPTION,
                     style: TextStyle(
                       fontSize: 16.0,
@@ -91,7 +110,13 @@ Widget desktopTitleAndDesc(
                 ),
               ],
             ),
-            ElevatedButton(onPressed: () {}, child: Text('See More'))
+            ElevatedButton(
+                onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ProjectsListPage(),
+                      ),
+                    ),
+                child: const Text('See More'))
           ],
         )
       : Column(
@@ -99,7 +124,7 @@ Widget desktopTitleAndDesc(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // TITLE
-            SelectableText(
+            const SelectableText(
               AppStrings.PROJECTS,
               style: TextStyle(
                 fontSize: 32.0,
@@ -107,13 +132,13 @@ Widget desktopTitleAndDesc(
                 color: Colors.white,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
             // DESCRIPTION
             SizedBox(
               width: screenWidth,
-              child: SelectableText(
+              child: const SelectableText(
                 AppStrings.OUR_SERVICE_DESCRIPTION,
                 style: TextStyle(
                   fontSize: 16.0,
@@ -121,18 +146,18 @@ Widget desktopTitleAndDesc(
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
-            ElevatedButton(onPressed: () {}, child: Text('See More'))
+            ElevatedButton(onPressed: () {}, child: const Text('See More'))
           ],
         );
 }
 
 class ProjectCard extends StatelessWidget {
-  final int index;
+  final Map<String, dynamic> dataProject;
 
-  ProjectCard(this.index);
+  const ProjectCard({super.key, required this.dataProject});
 
   @override
   Widget build(BuildContext context) {
@@ -141,57 +166,59 @@ class ProjectCard extends StatelessWidget {
         MediaQuery.of(context).size.width <= 1024;
 
     // Replace this with your project card design
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          SizedBox(
-            height: 16.0,
-          ),
-          // Your project card content here
-          Icon(Icons.image,
-              size: isDesktop
-                  ? 48.0
-                  : isTablet
-                      ? 36.0
-                      : 24.0),
-          SizedBox(
-            height: 8.0,
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
-                child: Text(
-                  'Project Title $index',
-                  style: TextStyle(
-                    fontSize: isDesktop
-                        ? 18.0
-                        : isTablet
-                            ? 16.0
-                            : 14.0,
-                  ),
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        const SizedBox(
+          height: 16.0,
+        ),
+        // Your project card content here
+        Image.asset(
+          dataProject['IMAGE_MAIN'],
+          width: double.infinity,
+          height: 200,
+          fit: BoxFit.cover,
+        ),
+        const SizedBox(
+          height: 8.0,
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+              child: Text(
+                dataProject['PROJECT_NAME'],
+                textAlign: TextAlign.center,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextstyles(
+                        font: 'Roboto',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        darkTextColor: Colors.white)
+                    .customText(),
               ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: 8.0, right: 8.0, top: 8.0, bottom: 16.0),
-                child: Text(
-                  'Project Description $index',
-                  style: TextStyle(
-                    fontSize: isDesktop
-                        ? 14.0
-                        : isTablet
-                            ? 12.0
-                            : 10.0,
-                  ),
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 8.0, right: 8.0, top: 8.0, bottom: 16.0),
+              child: Text(
+                dataProject['HIGHLIGHT'],
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextstyles(
+                        font: 'Roboto',
+                        fontSize: 14,
+                        darkTextColor: Colors.white)
+                    .customText(),
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

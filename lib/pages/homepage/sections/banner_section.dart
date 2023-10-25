@@ -11,19 +11,11 @@ class _BannerSectionState extends State<BannerSection> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
   final List<Widget> _bannerSlides = [
-    Container(
-      color: Colors.red,
-      child: const Center(),
-    ),
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.orange,
-    ),
-    Container(
-      color: Colors.purple,
-    )
+    Image.asset(AppImages.BANNER_6),
+    Image.asset(AppImages.BANNER_8),
+    Image.asset(AppImages.BANNER_2),
+    Image.asset(AppImages.BANNER_3),
+    Image.asset(AppImages.BANNER_4),
   ];
   late Timer _timer;
 

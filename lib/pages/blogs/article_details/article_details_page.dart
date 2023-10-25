@@ -106,7 +106,7 @@ class ArticleDetailsPage extends StatelessWidget {
                                                           .split(':')[0] +
                                                       ': ',
                                                   style: AppTextstyles()
-                                                      .subheadingLight()),
+                                                      .h3Light()),
                                               TextSpan(
                                                   text: dataBlog['LIST_OPT_1']
                                                               ['LIST'][index]
@@ -165,7 +165,7 @@ class ArticleDetailsPage extends StatelessWidget {
                                                           .split(':')[0] +
                                                       ': ',
                                                   style: AppTextstyles()
-                                                      .subheadingLight()),
+                                                      .h3Light()),
                                               TextSpan(
                                                   text: dataBlog['LIST_OPT_2']
                                                               ['LIST'][index]

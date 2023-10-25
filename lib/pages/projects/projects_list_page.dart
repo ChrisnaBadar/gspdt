@@ -48,7 +48,9 @@ class ProjectsListPage extends StatelessWidget {
                 ),
                 //PROJECT LIST 3 TILE SECTION
                 const ProjectHighlight(),
-                const ProjectsListPortfolio()
+                ProjectsListPortfolio(
+                  dataProject: DataProjects.myProjectsList,
+                )
               ],
             ),
           ),
@@ -75,7 +77,7 @@ class ProjectHighlight extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 64.0),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 16.0,
           ),
           Text.rich(TextSpan(children: [
@@ -96,7 +98,7 @@ class ProjectHighlight extends StatelessWidget {
                     children: [
                       Container(
                         height: 540,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10.0),
                                 topRight: Radius.circular(10.0))),
@@ -104,7 +106,7 @@ class ProjectHighlight extends StatelessWidget {
                             .myProjectsList['IMAGE_MAIN_PORTRAIT']![0]),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0))),
@@ -142,7 +144,7 @@ class ProjectHighlight extends StatelessWidget {
                     children: [
                       Container(
                         height: 540,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10.0),
                                 topRight: Radius.circular(10.0))),
@@ -150,7 +152,7 @@ class ProjectHighlight extends StatelessWidget {
                             .myProjectsList['IMAGE_MAIN_PORTRAIT']![0]),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0))),
@@ -188,7 +190,7 @@ class ProjectHighlight extends StatelessWidget {
                     children: [
                       Container(
                         height: 540,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(10.0),
                                 topRight: Radius.circular(10.0))),
@@ -196,7 +198,7 @@ class ProjectHighlight extends StatelessWidget {
                             .myProjectsList['IMAGE_MAIN_PORTRAIT']![0]),
                       ),
                       Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(10.0),
                                 bottomRight: Radius.circular(10.0))),
@@ -236,12 +238,15 @@ class ProjectHighlight extends StatelessWidget {
 }
 
 class ProjectsListPortfolio extends StatelessWidget {
-  const ProjectsListPortfolio({super.key});
+  final Map<String, dynamic> dataProject;
+  const ProjectsListPortfolio({super.key, required this.dataProject});
 
   @override
   Widget build(BuildContext context) {
-    List cacc = Controllers().generateCaccList(8, [2, 2, 1, 1, 4]);
-    List macc = Controllers().generateMaccList(8, [2, 1, 1, 1, 2]);
+    List cacc = Controllers()
+        .generateCaccList(dataProject['IMAGE_MAIN'].length, [2, 2, 1, 1, 4]);
+    List macc = Controllers()
+        .generateMaccList(dataProject['IMAGE_MAIN'].length, [2, 1, 1, 1, 2]);
     return StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 4,
@@ -251,21 +256,36 @@ class ProjectsListPortfolio extends StatelessWidget {
             (index) => StaggeredGridTile.count(
                   crossAxisCellCount: cacc[index],
                   mainAxisCellCount: macc[index],
-                  child: Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 1, color: Colors.black)),
+                  child: InkWell(
+                    onTap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProjectDetails(
+                          dataProject: dataProject['NAME'][index],
+                        ),
+                      ),
+                    ),
                     child: Stack(
                       alignment: Alignment.bottomCenter,
                       children: [
-                        Container(),
+                        Image.asset(
+                          dataProject['IMAGE_MAIN'][index],
+                          height: double.infinity,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
                         Positioned(
                           child: FractionallySizedBox(
                             widthFactor: 1,
                             heightFactor: 0.25,
                             child: Container(
+                              padding: const EdgeInsets.all(8.0),
                               color: Colors.black.withOpacity(.5),
                               child: Center(
-                                child: Text('${index + 1}'),
+                                child: Text(
+                                  dataProject['PROJECT_NAME'][index],
+                                  textAlign: TextAlign.center,
+                                  style: AppTextstyles().h1Dark(),
+                                ),
                               ),
                             ),
                           ),

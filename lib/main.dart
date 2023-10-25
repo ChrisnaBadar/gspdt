@@ -1,5 +1,4 @@
 import 'package:gspdt/constants/constants.dart';
-import 'package:gspdt/pages/projects/projects_list_page.dart';
 
 bool testMode = false;
 
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ProjectsListPage(),
+      home: const Homepage(),
     );
   }
 }

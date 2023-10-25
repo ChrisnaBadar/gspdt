@@ -57,6 +57,10 @@ flutter:
     - assets/blogs/
     - assets/projects/masjid_cianjur/
     - assets/projects/outsource_rsai/
+    - assets/projects/cluster_budi_asri/
+    - assets/projects/masjid_daarut_tauhiid/
+    - assets/projects/stai/
+    - assets/projects/model_images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
