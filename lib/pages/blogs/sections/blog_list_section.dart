@@ -8,7 +8,15 @@ class BlogListSection extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = (screenWidth / 16) * 9;
     List<int> randomNumbers = BlogController().generateUniqueRandomNumbers(
-        4, 0, DataBlog.myArticlesList['NAME'].length - 1);
+        screenWidth <= AppSizes.PHONE_SIZE
+            ? 1
+            : screenWidth <= AppSizes.TABLET_SIZE
+                ? 2
+                : screenWidth <= AppSizes.LARGE_SIZE
+                    ? 3
+                    : 4,
+        0,
+        DataBlog.myArticlesList['NAME'].length - 1);
     return Column(
       children: [
         SizedBox(

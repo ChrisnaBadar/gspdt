@@ -26,21 +26,21 @@ class ProjectDetails extends StatelessWidget {
                     flex: 5,
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 100,
                         ),
                         Text(
                           dataProject['PROJECT_NAME'],
                           style: AppTextstyles().h1Light(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8.0,
                         ),
                         Text(
                           dataProject['HIGHLIGHT'],
                           style: AppTextstyles().h3Light(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16.0,
                         ),
                         Row(
@@ -61,7 +61,7 @@ class ProjectDetails extends StatelessWidget {
                                     dataProject['DESCRIPTION'],
                                     style: AppTextstyles().paragraphLight(),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 16.0,
                                   ),
                                   StaggeredGrid.count(
@@ -84,11 +84,12 @@ class ProjectDetails extends StatelessWidget {
                                                     style: AppTextstyles(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      darkTextColor: AppThemes
-                                                          .secondaryTextLight,
-                                                    ).customText(),
+                                                      darkThemeTextColor:
+                                                          AppThemes
+                                                              .secondaryTextLight,
+                                                    ).customTextDarkTheme(),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 8.0,
                                                   ),
                                                   Text(
@@ -97,11 +98,11 @@ class ProjectDetails extends StatelessWidget {
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: AppTextstyles(
-                                                              darkTextColor:
+                                                              darkThemeTextColor:
                                                                   AppThemes
                                                                       .accentTextLight,
                                                               font: 'Roboto')
-                                                          .customText()),
+                                                          .customTextDarkTheme()),
                                                 ],
                                               ),
                                             ),
@@ -121,11 +122,12 @@ class ProjectDetails extends StatelessWidget {
                                                     style: AppTextstyles(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      darkTextColor: AppThemes
-                                                          .secondaryTextLight,
-                                                    ).customText(),
+                                                      darkThemeTextColor:
+                                                          AppThemes
+                                                              .secondaryTextLight,
+                                                    ).customTextDarkTheme(),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 8.0,
                                                   ),
                                                   Text(dataProject['DATE_END'],
@@ -133,11 +135,11 @@ class ProjectDetails extends StatelessWidget {
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: AppTextstyles(
-                                                              darkTextColor:
+                                                              darkThemeTextColor:
                                                                   AppThemes
                                                                       .accentTextLight,
                                                               font: 'Roboto')
-                                                          .customText()),
+                                                          .customTextDarkTheme()),
                                                 ],
                                               ),
                                             ),
@@ -157,11 +159,12 @@ class ProjectDetails extends StatelessWidget {
                                                     style: AppTextstyles(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                      darkTextColor: AppThemes
-                                                          .secondaryTextLight,
-                                                    ).customText(),
+                                                      darkThemeTextColor:
+                                                          AppThemes
+                                                              .secondaryTextLight,
+                                                    ).customTextDarkTheme(),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 8.0,
                                                   ),
                                                   Text(
@@ -171,11 +174,11 @@ class ProjectDetails extends StatelessWidget {
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: AppTextstyles(
-                                                              darkTextColor:
+                                                              darkThemeTextColor:
                                                                   AppThemes
                                                                       .accentTextLight,
                                                               font: 'Roboto')
-                                                          .customText()),
+                                                          .customTextDarkTheme()),
                                                 ],
                                               ),
                                             ),
@@ -187,22 +190,22 @@ class ProjectDetails extends StatelessWidget {
                             )),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16.0,
                         ),
                         LingkupPekerjaan(dataProject: dataProject),
-                        SizedBox(
+                        const SizedBox(
                           height: 16.0,
                         ),
                         TantanganSolusi(dataProject: dataProject),
-                        SizedBox(
+                        const SizedBox(
                           height: 16.0,
                         ),
                         Text(
                           'Galeri Proyek',
                           style: AppTextstyles().h2Light(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 16.0,
                         ),
                         StaggeredGrid.count(
@@ -238,7 +241,7 @@ class ProjectDetails extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(top: 0, left: 0, right: 0, child: CustomHeader())
+            const Positioned(top: 0, left: 0, right: 0, child: CustomHeader())
           ],
         ),
       ),
@@ -258,14 +261,14 @@ class LingkupPekerjaan extends StatelessWidget {
           dataProject['LIST_OPT_2']['LIST_TITLE'],
           style: AppTextstyles().h2Light(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8.0,
         ),
         Text(
           dataProject['LIST_OPT_2']['LIST_DESCRIPTION'],
           style: AppTextstyles().subheadingLight(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16.0,
         ),
         Column(
@@ -280,12 +283,12 @@ class LingkupPekerjaan extends StatelessWidget {
                       ': ',
                   style:
                       AppTextstyles(fontWeight: FontWeight.bold, fontSize: 18)
-                          .customText()),
+                          .customTextDarkTheme()),
               TextSpan(
                   text: dataProject['LIST_OPT_2']['LIST'][index]['POIN']
                       .split(':')[1],
                   style: AppTextstyles().paragraphLight()),
-              TextSpan(text: '\n')
+              const TextSpan(text: '\n')
             ])),
           ),
         ),
@@ -306,14 +309,14 @@ class TantanganSolusi extends StatelessWidget {
           dataProject['LIST_OPT_1']['LIST_TITLE'],
           style: AppTextstyles().h2Light(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 8.0,
         ),
         Text(
           dataProject['LIST_OPT_1']['LIST_DESCRIPTION'],
           style: AppTextstyles().subheadingLight(),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16.0,
         ),
         Column(
@@ -328,12 +331,12 @@ class TantanganSolusi extends StatelessWidget {
                       ': ',
                   style:
                       AppTextstyles(fontWeight: FontWeight.bold, fontSize: 18)
-                          .customText()),
+                          .customTextDarkTheme()),
               TextSpan(
                   text: dataProject['LIST_OPT_1']['LIST'][index]['POIN']
                       .split(':')[1],
                   style: AppTextstyles().paragraphLight()),
-              TextSpan(text: '\n')
+              const TextSpan(text: '\n')
             ])),
           ),
         ),

@@ -1,9 +1,15 @@
 import 'package:gspdt/constants/constants.dart';
 import 'package:gspdt/pages/projects/projects_details.dart';
 
-class OurProjectsSection extends StatelessWidget {
+class OurProjectsSection extends StatefulWidget {
   const OurProjectsSection({super.key});
 
+  @override
+  State<OurProjectsSection> createState() => _OurProjectsSectionState();
+}
+
+class _OurProjectsSectionState extends State<OurProjectsSection> {
+  bool en = false;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -24,17 +30,19 @@ class OurProjectsSection extends StatelessWidget {
                   ? desktopTitleAndDesc(
                       screenWidth: screenWidth,
                       isDesktop: true,
-                      context: context)
+                      context: context,
+                      en: en)
                   : desktopTitleAndDesc(
                       screenWidth: screenWidth,
                       isDesktop: false,
-                      context: context),
+                      context: context,
+                      en: en),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: StaggeredGrid.count(
                 crossAxisCount: isDesktop
-                    ? 4
+                    ? 3
                     : isTablet
                         ? 2
                         : 1,
@@ -42,13 +50,13 @@ class OurProjectsSection extends StatelessWidget {
                 crossAxisSpacing: 4,
                 children: List.generate(
                   isDesktop
-                      ? 8
+                      ? 6
                       : isTablet
                           ? 6
                           : 4,
                   (index) => StaggeredGridTile.count(
                     crossAxisCellCount: 1,
-                    mainAxisCellCount: 1,
+                    mainAxisCellCount: .8,
                     child: InkWell(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
@@ -76,7 +84,8 @@ class OurProjectsSection extends StatelessWidget {
 Widget desktopTitleAndDesc(
     {required double screenWidth,
     required bool isDesktop,
-    required BuildContext context}) {
+    required BuildContext context,
+    required bool en}) {
   return isDesktop
       ? Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,8 +95,8 @@ Widget desktopTitleAndDesc(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // TITLE
-                const SelectableText(
-                  AppStrings.PROJECTS,
+                SelectableText(
+                  AppStrings(en: en).PROJECTS,
                   style: TextStyle(
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
@@ -100,8 +109,8 @@ Widget desktopTitleAndDesc(
                 // DESCRIPTION
                 SizedBox(
                   width: screenWidth - 350,
-                  child: const SelectableText(
-                    AppStrings.PROJECTS_OVERVIEW_DESCRIPTION,
+                  child: SelectableText(
+                    AppStrings(en: en).PROJECTS_OVERVIEW_DESCRIPTION,
                     style: TextStyle(
                       fontSize: 16.0,
                       color: Colors.white,
@@ -124,8 +133,8 @@ Widget desktopTitleAndDesc(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // TITLE
-            const SelectableText(
-              AppStrings.PROJECTS,
+            SelectableText(
+              AppStrings(en: en).PROJECTS,
               style: TextStyle(
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
@@ -138,8 +147,8 @@ Widget desktopTitleAndDesc(
             // DESCRIPTION
             SizedBox(
               width: screenWidth,
-              child: const SelectableText(
-                AppStrings.OUR_SERVICE_DESCRIPTION,
+              child: SelectableText(
+                AppStrings(en: en).OUR_SERVICE_DESCRIPTION,
                 style: TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
@@ -161,63 +170,58 @@ class ProjectCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDesktop = MediaQuery.of(context).size.width > 1024;
-    bool isTablet = MediaQuery.of(context).size.width > 768 &&
-        MediaQuery.of(context).size.width <= 1024;
-
     // Replace this with your project card design
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        const SizedBox(
-          height: 16.0,
+        Expanded(
+          flex: 3,
+          child: Image.asset(
+            dataProject['IMAGE_MAIN'],
+            width: double.infinity,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
         ),
-        // Your project card content here
-        Image.asset(
-          dataProject['IMAGE_MAIN'],
-          width: double.infinity,
-          height: 200,
-          fit: BoxFit.cover,
-        ),
-        const SizedBox(
-          height: 8.0,
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
-              child: Text(
-                dataProject['PROJECT_NAME'],
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextstyles(
-                        font: 'Roboto',
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        darkTextColor: Colors.white)
-                    .customText(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 8.0, right: 8.0, top: 8.0, bottom: 16.0),
-              child: Text(
-                dataProject['HIGHLIGHT'],
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: AppTextstyles(
-                        font: 'Roboto',
-                        fontSize: 14,
-                        darkTextColor: Colors.white)
-                    .customText(),
-              ),
-            ),
-          ],
-        ),
+        Expanded(
+            flex: 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
+                  child: Text(
+                    dataProject['PROJECT_NAME'],
+                    textAlign: TextAlign.center,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextstyles(
+                            font: 'Roboto',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            darkThemeTextColor: Colors.white)
+                        .customTextDarkTheme(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 8.0, right: 8.0, top: 8.0, bottom: 16.0),
+                  child: Text(
+                    dataProject['HIGHLIGHT'],
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextstyles(
+                            font: 'Roboto',
+                            fontSize: 14,
+                            darkThemeTextColor: Colors.white)
+                        .customTextDarkTheme(),
+                  ),
+                ),
+              ],
+            ))
       ],
     );
   }

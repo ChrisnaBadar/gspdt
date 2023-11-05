@@ -7,7 +7,10 @@ class BlogListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    double screenWidth = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: customAppbar(parentWidth: screenWidth),
+      drawer: Drawer(child: CustomMobileHeader()),
       body: Stack(
         children: [
           SingleChildScrollView(
@@ -21,12 +24,14 @@ class BlogListPage extends StatelessWidget {
               ],
             ),
           ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: CustomHeader(),
-          )
+          screenWidth <= AppSizes.TABLET_SIZE
+              ? Container()
+              : Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: CustomHeader(),
+                )
         ],
       ),
     );

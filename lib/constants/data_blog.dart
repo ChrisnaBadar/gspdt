@@ -458,6 +458,10 @@ class DataBlog {
     };
   }
 
+  static Map<String, dynamic> masjidCianjur() {
+    return {};
+  }
+
   static Map<String, dynamic> newPost() {
     return {
       'DATE': 'Senin, 01 Oktober 2023',

@@ -64,4 +64,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    implementation 'com.midtrans:java-library:3.0.0'
+}

@@ -2,7 +2,8 @@ part of constants;
 
 class DataProjects {
   static const String imageDir = "assets/projects";
-  static Map<String, List> myProjectsList = {
+  static Map<String, dynamic> myProjectsList = {
+    'MAP_NAME': {'masjid_cianjur': masjidCianjur()},
     'NAME': [
       masjidCianjur(),
       cluster_budi_asri(),

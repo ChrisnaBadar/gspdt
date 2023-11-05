@@ -8,6 +8,7 @@ class OurServiceSection extends StatefulWidget {
 }
 
 class _OurServiceSectionState extends State<OurServiceSection> {
+  bool en = false;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -16,23 +17,25 @@ class _OurServiceSectionState extends State<OurServiceSection> {
       width: screenWidth,
       child: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: screenWidth <= AppSizes.TABLET_SIZE
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             // First Row - Title Text
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SelectableText('Bidang Pekerjaan',
-                      style: AppTextstyles().h1Light()),
-                ],
-              ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
+              child: SelectableText('Bidang Pekerjaan',
+                  style: AppTextstyles().h1Light()),
             ),
 
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
+                mainAxisAlignment: screenWidth <= AppSizes.TABLET_SIZE
+                    ? MainAxisAlignment.center
+                    : MainAxisAlignment.start,
                 children: [
                   Container(
                     width: 75,
@@ -56,49 +59,23 @@ class _OurServiceSectionState extends State<OurServiceSection> {
             // Second Row - Description Text
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    width: screenWidth * 0.8, // 80% of screen width
-                    child: SelectableText(
-                      AppStrings.OUR_SERVICE_DESCRIPTION,
-                      style: AppTextstyles().paragraphLight(),
-                      textAlign: TextAlign.left,
-                    ),
-                  ),
-                ],
+              child: SizedBox(
+                width: screenWidth * 0.8, // 80% of screen width
+                child: SelectableText(
+                  AppStrings(en: en).OUR_SERVICE_DESCRIPTION,
+                  style: AppTextstyles().paragraphLight(),
+                  textAlign: screenWidth <= AppSizes.TABLET_SIZE
+                      ? TextAlign.center
+                      : TextAlign.left,
+                ),
               ),
             ),
             const SizedBox(height: 16.0), // Space between rows
 
-            // Third Row - Boxes
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomBox(
-                      topLineColor: AppThemes.primaryColorLight,
-                      icon: AppImages.CONSTRUCTION_ICON,
-                      titleText: 'Pelaksana Konstruksi',
-                      desText:
-                          'Progress yang Transparan: Bersama kami, Anda akan selalu tahu di mana proyek Anda berada. Kami memberikan informasi real-time untuk memastikan Anda tetap terinformasi.'),
-                  CustomBox(
-                      topLineColor: AppThemes.primaryAccentLight,
-                      icon: AppImages.CLEANING_ICON,
-                      titleText: 'Cleaning Service',
-                      desText:
-                          'Progress yang Transparan: Bersama kami, Anda akan selalu tahu di mana proyek Anda berada. Kami memberikan informasi real-time untuk memastikan Anda tetap terinformasi.'),
-                  CustomBox(
-                      topLineColor: AppThemes.secondaryColorLight,
-                      icon: AppImages.DESIGN_ICON,
-                      titleText: 'Perencana Gedung',
-                      desText:
-                          'Progress yang Transparan: Bersama kami, Anda akan selalu tahu di mana proyek Anda berada. Kami memberikan informasi real-time untuk memastikan Anda tetap terinformasi.'),
-                ],
-              ),
-            ),
+            ServiceCustomBox(
+              en: en,
+              parentWidth: screenWidth,
+            )
           ],
         ),
       ),
@@ -106,83 +83,95 @@ class _OurServiceSectionState extends State<OurServiceSection> {
   }
 }
 
-class CustomBox extends StatelessWidget {
-  final Color topLineColor;
-  final String icon;
-  final String titleText;
-  final String desText;
-  const CustomBox(
-      {super.key,
-      required this.topLineColor,
-      required this.icon,
-      required this.titleText,
-      required this.desText});
+class ServiceCustomBox extends StatelessWidget {
+  final bool en;
+  final double parentWidth;
+  const ServiceCustomBox(
+      {super.key, required this.en, required this.parentWidth});
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double boxWidth = (screenWidth - 100.0) /
-        3.0; // Divide the screen width by 3 with 10 pixels gap between boxes
-    double boxHeight = boxWidth / 16 * 9; // 16:9 aspect ratio
-
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        Positioned(
-          top: 0,
-          child: Container(
-            width: boxWidth,
-            height: 5,
-            color: topLineColor,
-          ),
-        ),
-        Container(
-          width: boxWidth,
-          margin: const EdgeInsets.all(
-              5.0), // Add 5 pixels margin to create a 10-pixel gap
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 16.0,
-              ),
-              //Title
-              SelectableText(
-                titleText,
-                style: AppTextstyles().h1Light(),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-
-              Image.asset(
-                icon,
-                scale: 2,
-              ),
-
-              //Description1
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: SelectableText(
-                      desText,
-                      style: AppTextstyles().paragraphLight(),
-                      textAlign: TextAlign.center,
+    List stringsTitle = [
+      AppStrings(en: en).CONSTRUCTION_FIELD,
+      AppStrings(en: en).OUTSOURCING_FIELD,
+      AppStrings(en: en).PLANNING_FIELD
+    ];
+    List stringsDescription = [
+      AppStrings(en: en).CONSTRUCTION_BENEFITS_1,
+      AppStrings(en: en).OUTSOURCING_BENEFITS_1,
+      AppStrings(en: en).PLANNING_BENEFITS_1
+    ];
+    List colorTheme = [
+      AppThemes.primaryColorLight,
+      AppThemes.primaryAccentDark,
+      AppThemes.primaryColorDark,
+    ];
+    List iconServices = [
+      AppImages.CONSTRUCTION_ICON,
+      AppImages.CLEANING_ICON,
+      AppImages.DESIGN_ICON
+    ];
+    return StaggeredGrid.count(
+      crossAxisCount: 3,
+      mainAxisSpacing: 8,
+      crossAxisSpacing: 8,
+      children: List.generate(
+          3,
+          (index) => StaggeredGridTile.count(
+              crossAxisCellCount: parentWidth <= AppSizes.TABLET_SIZE ? 3 : 1,
+              mainAxisCellCount: parentWidth <= AppSizes.PHONE_SIZE
+                  ? 2.5
+                  : parentWidth <= AppSizes.TABLET_SIZE
+                      ? 1.2
+                      : 1,
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal:
+                        parentWidth <= AppSizes.TABLET_SIZE ? 100.0 : 8.0,
+                    vertical: 8.0),
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            Container(
+                              color: colorTheme[index],
+                              height: 5,
+                              width: double.infinity,
+                            ),
+                            SizedBox(
+                              height: 8.0,
+                            ),
+                            Text(
+                              stringsTitle[index],
+                              textAlign: TextAlign.center,
+                              style: AppTextstyles().h2Light(),
+                            ),
+                          ],
+                        )),
+                    Expanded(
+                      flex: 1,
+                      child: Image.asset(
+                        iconServices[index],
+                        scale: 2,
+                      ),
                     ),
-                  ),
+                    Expanded(
+                        flex: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            stringsDescription[index],
+                            textAlign: TextAlign.center,
+                            maxLines: 5,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextstyles().paragraphLight(),
+                          ),
+                        )),
+                  ],
                 ),
-              ),
-              SizedBox(
-                height: 16.0,
-              ),
-            ],
-          ),
-        ),
-      ],
+              ))),
     );
   }
 }

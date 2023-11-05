@@ -25,6 +25,8 @@ export 'package:gspdt/widgets/menu_item.dart';
 export 'package:gspdt/widgets/fullscreen_row.dart';
 export 'package:gspdt/widgets/custom_header.dart';
 export 'package:gspdt/widgets/footer.dart';
+export 'package:gspdt/widgets/custom_mobile_header.dart';
+export 'package:gspdt/widgets/custom_appbar.dart';
 
 //pages
 export 'package:gspdt/pages/homepage/homepage.dart';
@@ -35,6 +37,10 @@ export 'package:gspdt/pages/homepage/sections/our_blogs_section.dart';
 export 'package:gspdt/pages/blogs/article_details/article_details_page.dart';
 export 'package:gspdt/pages/blogs/blog_List_page.dart';
 export 'package:gspdt/pages/projects/projects_list_page.dart';
+export 'package:gspdt/pages/donation_page/donation_list_page.dart';
+export 'package:gspdt/pages/donation_page/donation_details.dart';
+export 'package:gspdt/pages/homepage/widgets/banner_1.dart';
+export 'package:gspdt/pages/homepage/widgets/banner_2.dart';
 
 //parts
 part 'app_textstyles.dart';
@@ -44,3 +50,6 @@ part 'app_images.dart';
 part 'data_blog.dart';
 part 'data_projects.dart';
 part 'data_outsource.dart';
+part 'data_donation.dart';
+part 'button_theme.dart';
+part 'app_sizes.dart';

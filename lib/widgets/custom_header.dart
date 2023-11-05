@@ -1,8 +1,14 @@
 import 'package:gspdt/constants/constants.dart';
 
-class CustomHeader extends StatelessWidget {
+class CustomHeader extends StatefulWidget {
   const CustomHeader({super.key});
 
+  @override
+  State<CustomHeader> createState() => _CustomHeaderState();
+}
+
+class _CustomHeaderState extends State<CustomHeader> {
+  bool en = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +21,7 @@ class CustomHeader extends StatelessWidget {
             flex: 1,
             child: Center(
               child: Image.asset(
-                'assets/images/logo_dark.png',
+                AppImages.LOGO_DARK,
                 scale: 2,
               ),
             ),
@@ -27,7 +33,7 @@ class CustomHeader extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 MenuItem(
-                  text: 'Home',
+                  text: AppStrings(en: en).HOME,
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
@@ -37,7 +43,7 @@ class CustomHeader extends StatelessWidget {
                   },
                 ),
                 MenuItem(
-                  text: 'Projects',
+                  text: AppStrings(en: en).PROJECTS,
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
@@ -47,7 +53,7 @@ class CustomHeader extends StatelessWidget {
                   },
                 ),
                 MenuItem(
-                  text: 'About Us',
+                  text: AppStrings(en: en).ABOUT_US,
                   onPressed: () {
                     // Navigator.of(context).push(
                     //   MaterialPageRoute(
@@ -57,7 +63,7 @@ class CustomHeader extends StatelessWidget {
                   },
                 ),
                 MenuItem(
-                    text: 'Blog',
+                    text: AppStrings(en: en).ARTICLES,
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(

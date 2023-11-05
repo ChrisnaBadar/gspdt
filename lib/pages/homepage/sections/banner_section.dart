@@ -10,13 +10,7 @@ class BannerSection extends StatefulWidget {
 class _BannerSectionState extends State<BannerSection> {
   final PageController _pageController = PageController();
   int _currentPage = 0;
-  final List<Widget> _bannerSlides = [
-    Image.asset(AppImages.BANNER_6),
-    Image.asset(AppImages.BANNER_8),
-    Image.asset(AppImages.BANNER_2),
-    Image.asset(AppImages.BANNER_3),
-    Image.asset(AppImages.BANNER_4),
-  ];
+  List<Widget> _bannerSlides = [];
   late Timer _timer;
 
   @override
@@ -49,6 +43,18 @@ class _BannerSectionState extends State<BannerSection> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = screenWidth / 16 * 9; // 16:9 aspect ratio
+    double phoneScreenHeight = screenWidth / 9 * 16;
+    _bannerSlides = [
+      Banner1(
+        parentWidth: screenWidth,
+      ),
+      Banner2(
+        parentWidth: screenWidth,
+      ),
+      // Image.asset(AppImages.BANNER_2),
+      // Image.asset(AppImages.BANNER_3),
+      // Image.asset(AppImages.BANNER_4),
+    ];
 
     return Column(
       children: <Widget>[
@@ -56,8 +62,9 @@ class _BannerSectionState extends State<BannerSection> {
           alignment: Alignment.center,
           children: [
             SizedBox(
-              height:
-                  screenHeight, // Automatic height based on 16:9 aspect ratio
+              height: screenWidth >= AppSizes.PHONE_SIZE
+                  ? screenHeight
+                  : phoneScreenHeight, // Automatic height based on 16:9 aspect ratio
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: _bannerSlides.length,

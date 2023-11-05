@@ -1,35 +1,71 @@
 part of constants;
 
 class AppTextstyles {
-  final Color? darkTextColor;
-  final Color? lightTextColor;
+  final Color? darkThemeTextColor;
+  final Color? lightThemeTextColor;
   final double? myOpacity;
   final String? font;
   final double? fontSize;
   final FontWeight? fontWeight;
+  final FontStyle? fontStyle;
   AppTextstyles(
-      {this.darkTextColor = Colors.black,
-      this.lightTextColor = Colors.white,
+      {this.darkThemeTextColor = Colors.black,
+      this.lightThemeTextColor = Colors.white,
       this.myOpacity = 1.0,
       this.font = 'Poppins',
-      this.fontSize = 12,
-      this.fontWeight = FontWeight.normal});
+      this.fontSize = 14,
+      this.fontWeight = FontWeight.normal,
+      this.fontStyle = FontStyle.normal});
 
-  TextStyle customText() {
+  //CUSTOM TEXT
+
+  TextStyle customTextLightTheme() {
     return GoogleFonts.getFont(
       font!,
       fontSize: fontSize,
       fontWeight: fontWeight,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
+
+  TextStyle customTextDarkTheme() {
+    return GoogleFonts.getFont(
+      font!,
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
+    );
+  }
+
+  //BUTTON THEME
+
+  TextStyle lightThemeButtonTextStyle() {
+    return GoogleFonts.lato(
+      fontSize: fontSize,
+      fontWeight: FontWeight.bold,
+      color: lightThemeTextColor!.withOpacity(myOpacity!),
+    );
+  }
+
+  TextStyle darkThemeButtonTextStyle() {
+    return GoogleFonts.lato(
+      fontSize: fontSize,
+      fontWeight: FontWeight.bold,
+      color: darkThemeTextColor!.withOpacity(myOpacity!),
+    );
+  }
+
+  //TEXT THEME
 
   TextStyle h1Light() {
     return GoogleFonts.getFont(
       font!,
       fontSize: 24,
       fontWeight: FontWeight.bold,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -38,7 +74,8 @@ class AppTextstyles {
       font!,
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -47,7 +84,8 @@ class AppTextstyles {
       font!,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -56,7 +94,8 @@ class AppTextstyles {
       font!,
       fontSize: 18,
       fontWeight: FontWeight.normal,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -65,7 +104,8 @@ class AppTextstyles {
       font!,
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: darkTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color:
+          darkThemeTextColor!.withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -75,7 +115,8 @@ class AppTextstyles {
       font!,
       fontSize: 24,
       fontWeight: FontWeight.bold,
-      color: lightTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -84,7 +125,8 @@ class AppTextstyles {
       font!,
       fontSize: 20,
       fontWeight: FontWeight.bold,
-      color: lightTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -93,7 +135,8 @@ class AppTextstyles {
       font!,
       fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: lightTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -102,7 +145,8 @@ class AppTextstyles {
       font!,
       fontSize: 18,
       fontWeight: FontWeight.normal,
-      color: lightTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
 
@@ -111,7 +155,8 @@ class AppTextstyles {
       font!,
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: lightTextColor!.withOpacity(myOpacity!), // Set your desired color
+      color: lightThemeTextColor!
+          .withOpacity(myOpacity!), // Set your desired color
     );
   }
 }

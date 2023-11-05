@@ -37,4 +37,10 @@ class AppImages {
   static const String BANNER_6 = "$imageDir/banner_6.png";
   static const String BANNER_7 = "$imageDir/banner_7.png";
   static const String BANNER_8 = "$imageDir/banner_8.png";
+
+  //BANNERS PORTRAIT
+  static const String PORTRAIT_BANNER_1 = "$imageDir/portrait_banner_1.png";
+  static const String PORTRAIT_BANNER_2 = "$imageDir/portrait_banner_2.png";
+  static const String PORTRAIT_BANNER_3 = "$imageDir/portrait_banner_3.png";
+  static const String PORTRAIT_BANNER_4 = "$imageDir/portrait_banner_4.png";
 }
