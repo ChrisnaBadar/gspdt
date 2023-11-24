@@ -15,7 +15,7 @@ class PortraitArticleList extends StatelessWidget {
                 height: 500,
                 child: FittedBox(
                   fit: BoxFit.cover,
-                  child: Image.asset(DataBlog.myArticlesList['IMAGE_MAIN'][0]),
+                  child: Container(),
                 ),
               )
             ],

@@ -22,8 +22,8 @@ class DataDonation {
     return {
       'ID': 'masjid_cianjur',
       'CATEGORY': 'donation',
-      'RELATED_PROJECT': DataProjects.masjidCianjur(),
-      'RELATED_ARTICLE': DataBlog.masjidCianjur(),
+      'RELATED_PROJECT': null,
+      'RELATED_ARTICLE': null,
       'NAME': 'Restoring Mosques in Cianjur City, Rebuild Lives',
       'HIGHLIGHT':
           'Your support can be the means by which these mosques are rebuilt, and the hearts of the faithful are healed. Together, we can make a difference in the lives of the people of Cianjur City.',

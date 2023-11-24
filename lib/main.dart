@@ -1,4 +1,5 @@
 import 'package:gspdt/constants/constants.dart';
+import 'package:gspdt/pages/donation_page/donate_page.dart';
 
 bool testMode = false;
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Homepage(),
+      home: const FundraiseListPage(),
     );
   }
 }

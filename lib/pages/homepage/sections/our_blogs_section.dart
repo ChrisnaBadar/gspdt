@@ -1,6 +1,6 @@
-import 'dart:ui';
-
 import 'package:gspdt/constants/constants.dart';
+import 'package:gspdt/models/article_model.dart';
+import 'package:dartz/dartz.dart' as dartz;
 
 class OurBlogSection extends StatefulWidget {
   const OurBlogSection({super.key});
@@ -10,44 +10,68 @@ class OurBlogSection extends StatefulWidget {
 }
 
 class _OurBlogSectionState extends State<OurBlogSection> {
+  Future<dartz.Either<String, ListArticleModel>>? listArticleModel;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    listArticleModel = DbServices().fetchArticleData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    bool isDesktop = screenWidth > 1024;
-    bool isTablet = screenWidth > 768 && screenWidth <= 1024;
-
-    List myColor = [Colors.amber, Colors.green, Colors.blue, Colors.red];
     List cacc = [2, 1, 1, 2];
     List macc = [2, 1, 1, 1];
 
-    return Column(
-      children: [
-        SizedBox(
-          height: 16.0,
-        ),
-        SelectableText(
-          'Article-article',
-          style: AppTextstyles().h1Light(),
-        ),
-        SizedBox(
-          height: 16.0,
-        ),
-        StaggeredGrid.count(
-          crossAxisCount: 4,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
-          children: List.generate(
-              4,
-              (index) => StaggeredGridTile.count(
-                  crossAxisCellCount: cacc[index],
-                  mainAxisCellCount: macc[index],
-                  child: MyImageContainer(
-                    blogImage: DataBlog.myArticlesList['IMAGE_MAIN'][index],
-                    blogTitle: DataBlog.myArticlesList['TITLE'][index],
-                  ))),
-        )
-      ],
-    );
+    return FutureBuilder(
+        future: listArticleModel,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            final result = snapshot.data!.fold(
+                (l) => 'Data Not Exist', (r) => ListArticleModel(data: r.data));
+            final response =
+                result != String ? result as ListArticleModel : null;
+            return Column(
+              children: [
+                SizedBox(
+                  height: 16.0,
+                ),
+                SelectableText(
+                  'Article-article',
+                  style: AppTextstyles().h1Light(),
+                ),
+                SizedBox(
+                  height: 16.0,
+                ),
+                StaggeredGrid.count(
+                  crossAxisCount: 4,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  children: List.generate(
+                      4,
+                      (index) => StaggeredGridTile.count(
+                          crossAxisCellCount: cacc[index],
+                          mainAxisCellCount: macc[index],
+                          child: MyImageContainer(
+                            blogImage: response!.data![index].attributes!
+                                .articleMainImage!.data!.attributes!.url!,
+                            blogTitle:
+                                response.data![index].attributes!.articleTitle!,
+                          ))),
+                )
+              ],
+            );
+          } else {
+            return const Center(
+              child: Text("Data Gagal Diambil"),
+            );
+          }
+        });
   }
 }
 
@@ -80,7 +104,7 @@ class _MyImageContainerState extends State<MyImageContainer> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image.asset(
+            Image.network(
               widget.blogImage,
               width: double.infinity,
               fit: BoxFit.cover,

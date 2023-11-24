@@ -26,12 +26,24 @@ Widget _buildMenuItem(BuildContext context) => Padding(
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Beranda'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => const Homepage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.description_outlined),
             title: const Text('Proyek Kami'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ProjectsListPage(),
+                ),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.business_center_outlined),
@@ -41,7 +53,13 @@ Widget _buildMenuItem(BuildContext context) => Padding(
           ListTile(
             leading: const Icon(Icons.article_outlined),
             title: const Text('Artikel'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const BlogListPage(),
+                ),
+              );
+            },
           ),
           const Divider()
         ],

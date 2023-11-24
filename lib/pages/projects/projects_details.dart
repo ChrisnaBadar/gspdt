@@ -1,16 +1,20 @@
 import 'package:gspdt/constants/constants.dart';
+import 'package:gspdt/models/project_model.dart';
 
 class ProjectDetails extends StatelessWidget {
-  final Map<String, dynamic> dataProject;
-  const ProjectDetails({super.key, required this.dataProject});
+  final Datum project;
+  const ProjectDetails({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     List cacc = Controllers().generateCaccList(
-        dataProject['IMAGE_LIST_LANDSCAPE'].length, [1, 1, 2, 2, 1, 1]);
+        project.attributes!.imageList!.data!.length, [1, 1, 2, 2, 1, 1]);
     List macc = Controllers().generateMaccList(
-        dataProject['IMAGE_LIST_LANDSCAPE'].length, [1, 1, 1, 1, 1, 1]);
+        project.attributes!.imageList!.data!.length, [1, 1, 1, 1, 1, 1]);
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: customAppbar(parentWidth: screenWidth),
+      drawer: Drawer(child: CustomMobileHeader()),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Stack(
@@ -18,186 +22,38 @@ class ProjectDetails extends StatelessWidget {
             SingleChildScrollView(
               child: Row(
                 children: [
+                  //======================LEFT SIDE===================
                   Expanded(
                     flex: 1,
                     child: Container(),
                   ),
+
+                  //==============================BODY================
                   Expanded(
-                    flex: 5,
+                    flex: Controllers().calculateFlex(screenWidth),
                     child: Column(
                       children: [
-                        const SizedBox(
-                          height: 100,
+                        DetailsHeader(
+                          screenWidth: screenWidth,
+                          project: project,
                         ),
-                        Text(
-                          dataProject['PROJECT_NAME'],
-                          style: AppTextstyles().h1Light(),
+                        SizedBox(
+                          height: 16.0,
                         ),
-                        const SizedBox(
-                          height: 8.0,
+                        ProjectInfo(
+                          screenWidth: screenWidth,
+                          project: project,
                         ),
-                        Text(
-                          dataProject['HIGHLIGHT'],
-                          style: AppTextstyles().h3Light(),
-                        ),
+                        // ProjectDetailsHeader(
+                        //     screenWidth: screenWidth, dataProject: dataProject),
                         const SizedBox(
                           height: 16.0,
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(dataProject['IMAGE_MAIN']),
-                              ),
-                            ),
-                            Expanded(
-                                child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    dataProject['DESCRIPTION'],
-                                    style: AppTextstyles().paragraphLight(),
-                                  ),
-                                  const SizedBox(
-                                    height: 16.0,
-                                  ),
-                                  StaggeredGrid.count(
-                                    crossAxisCount: 6,
-                                    mainAxisSpacing: 2,
-                                    crossAxisSpacing: 2,
-                                    children: [
-                                      StaggeredGridTile.count(
-                                          crossAxisCellCount: 2,
-                                          mainAxisCellCount: 1,
-                                          child: Container(
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Tanggal Proyek Dimulai: ',
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: AppTextstyles(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      darkThemeTextColor:
-                                                          AppThemes
-                                                              .secondaryTextLight,
-                                                    ).customTextDarkTheme(),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 8.0,
-                                                  ),
-                                                  Text(
-                                                      dataProject['DATE_START'],
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: AppTextstyles(
-                                                              darkThemeTextColor:
-                                                                  AppThemes
-                                                                      .accentTextLight,
-                                                              font: 'Roboto')
-                                                          .customTextDarkTheme()),
-                                                ],
-                                              ),
-                                            ),
-                                          )),
-                                      StaggeredGridTile.count(
-                                          crossAxisCellCount: 2,
-                                          mainAxisCellCount: 1,
-                                          child: Container(
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Tanggal Proyek Selesai: ',
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: AppTextstyles(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      darkThemeTextColor:
-                                                          AppThemes
-                                                              .secondaryTextLight,
-                                                    ).customTextDarkTheme(),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 8.0,
-                                                  ),
-                                                  Text(dataProject['DATE_END'],
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: AppTextstyles(
-                                                              darkThemeTextColor:
-                                                                  AppThemes
-                                                                      .accentTextLight,
-                                                              font: 'Roboto')
-                                                          .customTextDarkTheme()),
-                                                ],
-                                              ),
-                                            ),
-                                          )),
-                                      StaggeredGridTile.count(
-                                          crossAxisCellCount: 2,
-                                          mainAxisCellCount: 1,
-                                          child: Container(
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  Text(
-                                                    'Pemilik Proyek: ',
-                                                    maxLines: 1,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: AppTextstyles(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      darkThemeTextColor:
-                                                          AppThemes
-                                                              .secondaryTextLight,
-                                                    ).customTextDarkTheme(),
-                                                  ),
-                                                  const SizedBox(
-                                                    height: 8.0,
-                                                  ),
-                                                  Text(
-                                                      dataProject[
-                                                          'PROJECT_OWNER'],
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: AppTextstyles(
-                                                              darkThemeTextColor:
-                                                                  AppThemes
-                                                                      .accentTextLight,
-                                                              font: 'Roboto')
-                                                          .customTextDarkTheme()),
-                                                ],
-                                              ),
-                                            ),
-                                          )),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            )),
-                          ],
-                        ),
+                        LingkupPekerjaan(project: project),
                         const SizedBox(
                           height: 16.0,
                         ),
-                        LingkupPekerjaan(dataProject: dataProject),
-                        const SizedBox(
-                          height: 16.0,
-                        ),
-                        TantanganSolusi(dataProject: dataProject),
+                        TantanganSolusi(project: project),
                         const SizedBox(
                           height: 16.0,
                         ),
@@ -213,7 +69,7 @@ class ProjectDetails extends StatelessWidget {
                           mainAxisSpacing: 4,
                           crossAxisSpacing: 4,
                           children: List.generate(
-                              dataProject['IMAGE_LIST_LANDSCAPE'].length,
+                              project.attributes!.imageList!.data!.length,
                               (index) => StaggeredGridTile.count(
                                     crossAxisCellCount: cacc[index],
                                     mainAxisCellCount: macc[index],
@@ -223,9 +79,8 @@ class ProjectDetails extends StatelessWidget {
                                               width: 1,
                                               color: AppThemes
                                                   .secondaryColorLight)),
-                                      child: Image.asset(
-                                        dataProject['IMAGE_LIST_LANDSCAPE']
-                                            [index],
+                                      child: Image.network(
+                                        '${AppStrings.API_ADDRESS}${project.attributes!.imageList!.data![index].attributes!.url!}',
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -241,7 +96,10 @@ class ProjectDetails extends StatelessWidget {
                 ],
               ),
             ),
-            const Positioned(top: 0, left: 0, right: 0, child: CustomHeader())
+            screenWidth <= AppSizes.TABLET_SIZE
+                ? Container()
+                : const Positioned(
+                    top: 0, left: 0, right: 0, child: CustomHeader())
           ],
         ),
       ),
@@ -249,23 +107,175 @@ class ProjectDetails extends StatelessWidget {
   }
 }
 
+class DetailsHeader extends StatelessWidget {
+  final double screenWidth;
+  final Datum project;
+  const DetailsHeader(
+      {super.key, required this.screenWidth, required this.project});
+
+  @override
+  Widget build(BuildContext context) {
+    List cacc = [4, 4];
+    List macc = [2, .5];
+    List phoneCacc = [4, 4, 4];
+    List phoneMacc = [2, 2, 4];
+    return Column(
+      children: [
+        SizedBox(
+          height: screenWidth <= AppSizes.TABLET_SIZE ? 0 : 100,
+        ),
+        Text(
+          project.attributes!.name!,
+          style: AppTextstyles(
+                  font: 'Poppins', fontSize: 20, fontWeight: FontWeight.bold)
+              .customTextDarkTheme(),
+        ),
+        const SizedBox(
+          height: 8.0,
+        ),
+        Text(
+          project.attributes!.highlight!,
+          textAlign: TextAlign.center,
+          style: AppTextstyles(
+            font: 'Poppins',
+            fontSize: 16,
+          ).customTextDarkTheme(),
+        ),
+        const SizedBox(
+          height: 16.0,
+        ),
+        StaggeredGrid.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+          children: List.generate(
+              2,
+              (index) => StaggeredGridTile.count(
+                  crossAxisCellCount: screenWidth <= AppSizes.PHONE_SIZE
+                      ? phoneCacc[index]
+                      : cacc[index],
+                  mainAxisCellCount: screenWidth <= AppSizes.PHONE_SIZE
+                      ? phoneMacc[index]
+                      : macc[index],
+                  child: index == 0
+                      ? Container(
+                          decoration: BoxDecoration(border: Border.all()),
+                          child: Image.network(
+                            '${AppStrings.API_ADDRESS}${project.attributes!.mainImage!.data!.attributes!.url!}',
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                      : Container(
+                          child: Text(
+                            project.attributes!.description!,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextstyles().paragraphLight(),
+                          ),
+                        ))),
+        ),
+      ],
+    );
+  }
+}
+
+class ProjectInfo extends StatelessWidget {
+  final double screenWidth;
+  final Datum project;
+  const ProjectInfo(
+      {super.key, required this.screenWidth, required this.project});
+
+  @override
+  Widget build(BuildContext context) {
+    List cacc = [1, 1, 1, 1];
+    List macc = [.5, .5, .5, .5];
+    List tabletCacc = [1, 1, 1, 1];
+    List tabletMacc = [.8, .8, .8, .8];
+    List phoneCacc = [2, 2, 2, 2];
+    List phoneMacc = [1, 1, 1, 1];
+    List projectHeaderInfoStrings = [
+      'Lokasi Proyek: ',
+      'Tahun Proyek: ',
+      'Pemilik Proyek: ',
+      'Kontak Info: '
+    ];
+    List projectDataInfoStrings = [
+      project.attributes!.location!,
+      project.attributes!.year!,
+      project.attributes!.owner!,
+      project.attributes!.contact!,
+    ];
+    return Column(
+      children: [
+        Text(
+          'Info Proyek',
+          style: AppTextstyles(
+                  font: 'Poppins', fontSize: 20, fontWeight: FontWeight.bold)
+              .customTextDarkTheme(),
+        ),
+        const SizedBox(
+          height: 8.0,
+        ),
+        StaggeredGrid.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 8,
+          children: List.generate(
+              4,
+              (index) => StaggeredGridTile.count(
+                  crossAxisCellCount: screenWidth <= AppSizes.PHONE_SIZE
+                      ? phoneCacc[index]
+                      : screenWidth <= AppSizes.TABLET_SIZE
+                          ? tabletCacc[index]
+                          : cacc[index],
+                  mainAxisCellCount: screenWidth <= AppSizes.PHONE_SIZE
+                      ? phoneMacc[index]
+                      : screenWidth <= AppSizes.TABLET_SIZE
+                          ? tabletMacc[index]
+                          : macc[index],
+                  child: Container(
+                    child: ListTile(
+                      title: Text(
+                        projectHeaderInfoStrings[index],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextstyles(
+                                font: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold)
+                            .customTextDarkTheme(),
+                      ),
+                      subtitle: Text(
+                        projectDataInfoStrings[index],
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextstyles().paragraphLight(),
+                      ),
+                    ),
+                  ))),
+        ),
+      ],
+    );
+  }
+}
+
 class LingkupPekerjaan extends StatelessWidget {
-  final Map<String, dynamic> dataProject;
-  const LingkupPekerjaan({super.key, required this.dataProject});
+  final Datum project;
+  const LingkupPekerjaan({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          dataProject['LIST_OPT_2']['LIST_TITLE'],
+          project.attributes!.listOpt2!.listTitle!.name,
           style: AppTextstyles().h2Light(),
         ),
         const SizedBox(
           height: 8.0,
         ),
         Text(
-          dataProject['LIST_OPT_2']['LIST_DESCRIPTION'],
+          project.attributes!.listOpt2!.listDescription!,
           style: AppTextstyles().subheadingLight(),
         ),
         const SizedBox(
@@ -274,18 +284,18 @@ class LingkupPekerjaan extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: List.generate(
-            dataProject['LIST_OPT_2']['LIST'].length,
+            project.attributes!.listOpt2!.list!.length,
             (index) => Text.rich(TextSpan(children: [
               TextSpan(
                   text: '${index + 1}. ' +
-                      dataProject['LIST_OPT_2']['LIST'][index]['POIN']
+                      project.attributes!.listOpt2!.list![index].poin!
                           .split(':')[0] +
                       ': ',
                   style:
                       AppTextstyles(fontWeight: FontWeight.bold, fontSize: 18)
                           .customTextDarkTheme()),
               TextSpan(
-                  text: dataProject['LIST_OPT_2']['LIST'][index]['POIN']
+                  text: project.attributes!.listOpt2!.list![index].poin!
                       .split(':')[1],
                   style: AppTextstyles().paragraphLight()),
               const TextSpan(text: '\n')
@@ -298,22 +308,22 @@ class LingkupPekerjaan extends StatelessWidget {
 }
 
 class TantanganSolusi extends StatelessWidget {
-  final Map<String, dynamic> dataProject;
-  const TantanganSolusi({super.key, required this.dataProject});
+  final Datum project;
+  const TantanganSolusi({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          dataProject['LIST_OPT_1']['LIST_TITLE'],
+          project.attributes!.listOpt1!.listTitle!.name,
           style: AppTextstyles().h2Light(),
         ),
         const SizedBox(
           height: 8.0,
         ),
         Text(
-          dataProject['LIST_OPT_1']['LIST_DESCRIPTION'],
+          project.attributes!.listOpt1!.listDescription!,
           style: AppTextstyles().subheadingLight(),
         ),
         const SizedBox(
@@ -322,18 +332,18 @@ class TantanganSolusi extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: List.generate(
-            dataProject['LIST_OPT_1']['LIST'].length,
+            project.attributes!.listOpt1!.list!.length,
             (index) => Text.rich(TextSpan(children: [
               TextSpan(
                   text: '${index + 1}. ' +
-                      dataProject['LIST_OPT_1']['LIST'][index]['POIN']
+                      project.attributes!.listOpt1!.list![index].poin!
                           .split(':')[0] +
                       ': ',
                   style:
                       AppTextstyles(fontWeight: FontWeight.bold, fontSize: 18)
                           .customTextDarkTheme()),
               TextSpan(
-                  text: dataProject['LIST_OPT_1']['LIST'][index]['POIN']
+                  text: project.attributes!.listOpt1!.list![index].poin!
                       .split(':')[1],
                   style: AppTextstyles().paragraphLight()),
               const TextSpan(text: '\n')

@@ -1,12 +1,25 @@
 import 'package:gspdt/constants/constants.dart';
+import 'package:gspdt/models/article_model.dart';
 
-class ArticleDetailsPage extends StatelessWidget {
-  final Map<String, dynamic> dataBlog;
-  const ArticleDetailsPage({super.key, required this.dataBlog});
+class ArticleDetailsPage extends StatefulWidget {
+  final ListArticleModel response;
+  final Datum article;
+  const ArticleDetailsPage(
+      {super.key, required this.article, required this.response});
 
   @override
+  State<ArticleDetailsPage> createState() => _ArticleDetailsPageState();
+}
+
+class _ArticleDetailsPageState extends State<ArticleDetailsPage> {
+  @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: customAppbar(parentWidth: screenWidth),
+      drawer: const Drawer(
+        child: CustomMobileHeader(),
+      ),
       body: Stack(
         children: [
           Padding(
@@ -15,14 +28,21 @@ class ArticleDetailsPage extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(flex: 1, child: Container()),
+                  //LEFT SIDE
+                  screenWidth <= AppSizes.TABLET_SIZE
+                      ? Container()
+                      : Expanded(flex: 1, child: Container()),
+
+                  //BODY
                   Expanded(
                     flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        const SizedBox(height: 100),
-                        Text(dataBlog['TITLE'],
+                        SizedBox(
+                            height:
+                                screenWidth <= AppSizes.TABLET_SIZE ? 0 : 100),
+                        Text(widget.article.attributes!.articleTitle!,
                             style: AppTextstyles().h1Light()),
                         const SizedBox(height: 10),
                         Row(
@@ -46,71 +66,81 @@ class ArticleDetailsPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          dataBlog['DATE'] + ' oleh: ' + dataBlog['AUTHOR'],
+                          '${widget.article.attributes!.articleDate!}, oleh: ${widget.article.attributes!.articleAuthor}',
                           style: const TextStyle(
                             color: Colors.grey,
                             fontSize: 14,
                           ),
                         ),
                         const SizedBox(height: 10),
-                        Image.asset(dataBlog['IMAGE_MAIN']),
+                        Image.network(
+                            '${AppStrings.API_ADDRESS}${widget.article.attributes!.articleMainImage!.data!.attributes!.url!}'),
                         const SizedBox(height: 10),
-                        Text(dataBlog['HIGHLIGHT'],
+                        Text(widget.article.attributes!.articleHighlight!,
                             style: AppTextstyles().paragraphLight()),
                         const SizedBox(height: 20),
-                        Text(dataBlog['DESCRIPTION'],
+                        Text(widget.article.attributes!.articleDescription!,
                             style: AppTextstyles().paragraphLight()),
                         const SizedBox(height: 32),
-                        dataBlog['LIST_OPT_1'] == ''
+                        widget.article.attributes!.articleListOpt1 == null
                             ? Container()
                             : Text(
-                                dataBlog['LIST_OPT_1']['LIST_TITLE'],
+                                widget.article.attributes!.articleListOpt1!
+                                    .listTitle!,
                                 style: AppTextstyles().h2Light(),
                               ),
                         const SizedBox(height: 10),
-                        dataBlog['LIST_OPT_1'] == ''
+                        widget.article.attributes!.articleListOpt1 == null
                             ? Container()
                             : Text(
-                                dataBlog['LIST_OPT_1']['LIST_DESCRIPTION'],
+                                widget.article.attributes!.articleListOpt1!
+                                    .listDescription!,
                                 style: AppTextstyles().paragraphLight(),
                               ),
                         const SizedBox(height: 10),
-                        dataBlog['LIST_OPT_1'] == ''
+                        widget.article.attributes!.articleListOpt1 == null
                             ? Container()
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: List.generate(
-                                    dataBlog['LIST_OPT_1']['LIST'].length,
+                                    widget.article.attributes!.articleListOpt1!
+                                        .list!.length,
                                     (index) => Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            dataBlog['LIST_OPT_1']['LIST']
-                                                        [index]['POIN_IMAGE'] ==
-                                                    ''
+                                            widget
+                                                        .article
+                                                        .attributes!
+                                                        .articleListOpt1!
+                                                        .list![index]
+                                                        .poinImage ==
+                                                    ""
                                                 ? Container()
                                                 : Image.asset(
-                                                    dataBlog['LIST_OPT_1']
-                                                            ['LIST'][index]
-                                                        ['POIN_IMAGE'],
+                                                    widget
+                                                        .article
+                                                        .attributes!
+                                                        .articleListOpt1!
+                                                        .list![index]
+                                                        .poinImage!,
                                                     width: double.infinity,
                                                     height: 100,
                                                     fit: BoxFit.fitWidth,
                                                   ),
                                             Text.rich(TextSpan(children: [
                                               TextSpan(
-                                                  text: '${index + 1}. ' +
-                                                      dataBlog['LIST_OPT_1']
-                                                                  ['LIST']
-                                                              [index]['POIN']
-                                                          .split(':')[0] +
-                                                      ': ',
+                                                  text:
+                                                      '${index + 1}. ${widget.article.attributes!.articleListOpt1!.list![index].poin!.split(':')[0]}: ',
                                                   style: AppTextstyles()
                                                       .h3Light()),
                                               TextSpan(
-                                                  text: dataBlog['LIST_OPT_1']
-                                                              ['LIST'][index]
-                                                          ['POIN']
+                                                  text: widget
+                                                      .article
+                                                      .attributes!
+                                                      .articleListOpt1!
+                                                      .list![index]
+                                                      .poin!
                                                       .split(':')[1],
                                                   style: AppTextstyles()
                                                       .paragraphLight())
@@ -124,101 +154,156 @@ class ArticleDetailsPage extends StatelessWidget {
                         const SizedBox(
                           height: 32,
                         ),
-                        dataBlog['LIST_OPT_2'] == ''
+                        widget.article.attributes!.articleListOpt2 == null
                             ? Container()
                             : Text(
-                                dataBlog['LIST_OPT_2']['LIST_TITLE'],
+                                widget.article.attributes!.articleListOpt2!
+                                    .listTitle!,
                                 style: AppTextstyles().subheadingLight(),
                               ),
                         const SizedBox(height: 10),
-                        dataBlog['LIST_OPT_2'] == ''
+                        widget.article.attributes!.articleListOpt2 == null
                             ? Container()
                             : Text(
-                                dataBlog['LIST_OPT_2']['LIST_DESCRIPTION'],
+                                widget.article.attributes!.articleListOpt2!
+                                    .listDescription!,
                                 style: AppTextstyles().paragraphLight(),
                               ),
                         const SizedBox(height: 10),
-                        dataBlog['LIST_OPT_2'] == ''
+                        widget.article.attributes!.articleListOpt2 == null
                             ? Container()
                             : Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: List.generate(
-                                    dataBlog['LIST_OPT_2']['LIST'].length,
+                                    widget.article.attributes!.articleListOpt2!
+                                        .list!.length,
                                     (index) => Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            dataBlog['LIST_OPT_2']['LIST']
-                                                        [index]['POIN_IMAGE'] ==
-                                                    ''
+                                            widget
+                                                        .article
+                                                        .attributes!
+                                                        .articleListOpt2!
+                                                        .list![index]
+                                                        .poinImage ==
+                                                    ""
                                                 ? Container()
-                                                : Image.asset(
-                                                    dataBlog['LIST_OPT_2']
-                                                            ['LIST'][index]
-                                                        ['POIN_IMAGE']),
+                                                : Image.asset(widget
+                                                    .article
+                                                    .attributes!
+                                                    .articleListOpt2!
+                                                    .list![index]
+                                                    .poinImage!),
                                             Text.rich(TextSpan(children: [
                                               TextSpan(
-                                                  text: '${index + 1}. ' +
-                                                      dataBlog['LIST_OPT_2']
-                                                                  ['LIST']
-                                                              [index]['POIN']
-                                                          .split(':')[0] +
-                                                      ': ',
+                                                  text:
+                                                      '${index + 1}. ${widget.article.attributes!.articleListOpt2!.list![index].poin!.split(':')[0]}: ',
                                                   style: AppTextstyles()
                                                       .h3Light()),
                                               TextSpan(
-                                                  text: dataBlog['LIST_OPT_2']
-                                                              ['LIST'][index]
-                                                          ['POIN']
+                                                  text: widget
+                                                      .article
+                                                      .attributes!
+                                                      .articleListOpt2!
+                                                      .list![index]
+                                                      .poin!
                                                       .split(':')[1],
                                                   style: AppTextstyles()
                                                       .paragraphLight())
                                             ])),
                                             const SizedBox(
                                               height: 12.0,
-                                            )
+                                            ),
                                           ],
                                         )),
                               ),
                         const SizedBox(height: 10),
                         Text(
-                          dataBlog['CONCLUSION'],
+                          widget.article.attributes!.articleConclusion!,
                           style: AppTextstyles().paragraphLight(),
-                        )
+                        ),
+                        const SizedBox(
+                          height: 32.0,
+                        ),
+                        screenWidth <= AppSizes.TABLET_SIZE
+                            ? Column(
+                                children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: screenWidth / 4,
+                                        height: 5,
+                                        color: AppThemes.primaryColorLight,
+                                      ),
+                                      Container(
+                                        width: screenWidth / 4,
+                                        height: 5,
+                                        color: AppThemes.primaryAccentLight,
+                                      ),
+                                      Container(
+                                        width: screenWidth / 4,
+                                        height: 5,
+                                        color: AppThemes.secondaryColorLight,
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 8.0,
+                                  ),
+                                  Text(
+                                    "Artike Lainnya",
+                                    style: AppTextstyles().h3Light(),
+                                  ),
+                                  const SizedBox(
+                                    height: 8.0,
+                                  ),
+                                  OtherArtcilesList(
+                                    response: widget.response,
+                                  )
+                                ],
+                              )
+                            : Container()
                       ],
                     ),
                   ),
-                  Expanded(
-                      flex: 2,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 100,
+                  screenWidth <= AppSizes.TABLET_SIZE
+                      ? Container()
+                      : Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                const SizedBox(
+                                  height: 100,
+                                ),
+                                Text(
+                                  'Artikel Lainnya',
+                                  style: AppTextstyles().h2Light(),
+                                ),
+                                const SizedBox(
+                                  height: 32,
+                                ),
+                                OtherArtcilesList(response: widget.response)
+                              ],
                             ),
-                            Text(
-                              'Artikel Lainnya',
-                              style: AppTextstyles().h2Light(),
-                            ),
-                            const SizedBox(
-                              height: 32,
-                            ),
-                            const OtherArtcilesList()
-                          ],
-                        ),
-                      )),
+                          )),
                 ],
               ),
             ),
           ),
-          const Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: CustomHeader(),
-          )
+          screenWidth <= AppSizes.TABLET_SIZE
+              ? Container()
+              : const Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: CustomHeader(),
+                )
         ],
       ),
     );
@@ -226,12 +311,15 @@ class ArticleDetailsPage extends StatelessWidget {
 }
 
 class OtherArtcilesList extends StatelessWidget {
-  const OtherArtcilesList({super.key});
+  final ListArticleModel response;
+  const OtherArtcilesList({super.key, required this.response});
 
   @override
   Widget build(BuildContext context) {
+    List<int> randomNumbers = BlogController()
+        .generateUniqueRandomNumbers(4, 0, response.data!.length - 1);
     return ListView.builder(
-      itemCount: DataBlog.myArticlesList['NAME'].length,
+      itemCount: randomNumbers.length,
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemBuilder: (context, index) {
@@ -239,8 +327,8 @@ class OtherArtcilesList extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                DataBlog.myArticlesList['IMAGE_MAIN'][index],
+              child: Image.network(
+                '${AppStrings.API_ADDRESS}${response.data![randomNumbers[index]].attributes!.articleMainImage!.data!.attributes!.url!}',
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.fitWidth,
@@ -248,18 +336,19 @@ class OtherArtcilesList extends StatelessWidget {
             ),
             ListTile(
               title: Text(
-                DataBlog.myArticlesList['TITLE'][index],
+                response.data![randomNumbers[index]].attributes!.articleTitle!,
                 style: AppTextstyles().h3Light(),
               ),
               subtitle: Text(
-                DataBlog.myArticlesList['HIGHLIGHT'][index],
+                response
+                    .data![randomNumbers[index]].attributes!.articleHighlight!,
                 style: AppTextstyles().paragraphLight(),
               ),
               onTap: () => Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => ArticleDetailsPage(
-                    dataBlog: DataBlog.myArticlesList['NAME'][index],
-                  ),
+                      article: response.data![randomNumbers[index]],
+                      response: response),
                 ),
               ),
             ),

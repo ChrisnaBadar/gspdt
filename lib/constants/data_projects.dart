@@ -1,10 +1,23 @@
 part of constants;
 
+/*
+ * Yang dibutuhkan halaman detail proyek:
+ * 1. Judul
+ * 2. deskripsi
+ * 3. tanggal mulai proyek
+ * 4. tanggal proyek selesai
+ * 5. Nilai Proyek
+ * 6. Pemilik Proyek
+ * 7. Panitia Penyelenggara
+ * 8. Pengawas Proyek
+ * 9. Kontak
+ */
+
 class DataProjects {
   static const String imageDir = "assets/projects";
   static Map<String, dynamic> myProjectsList = {
-    'MAP_NAME': {'masjid_cianjur': masjidCianjur()},
-    'NAME': [
+    "MAP_NAME": {"masjid_cianjur": masjidCianjur()},
+    "NAME": [
       masjidCianjur(),
       cluster_budi_asri(),
       stai_daarut_tauhiid(),
@@ -17,194 +30,196 @@ class DataProjects {
       gedung_4_lantai_dt_peduli(),
       gedung_pesantren_masa_keemasan()
     ],
-    'IMAGE_MAIN': [
-      masjidCianjur()['IMAGE_MAIN'],
-      cluster_budi_asri()['IMAGE_MAIN'],
-      stai_daarut_tauhiid()['IMAGE_MAIN'],
-      dome_eco_pesantren()['IMAGE_MAIN'],
-      masjid_daarut_tauhiid()['IMAGE_MAIN'],
-      masjid_besar_ciparay()['IMAGE_MAIN'],
-      perbaikan_masjid_cipaku()['IMAGE_MAIN'],
-      rumah_santri_karya_daarut_tauhiid()['IMAGE_MAIN'],
-      rumah_graha_bukit_raya()['IMAGE_MAIN'],
-      gedung_4_lantai_dt_peduli()['IMAGE_MAIN'],
-      gedung_pesantren_masa_keemasan()['IMAGE_MAIN']
+    "mainImage": [
+      masjidCianjur()["mainImage"],
+      cluster_budi_asri()["mainImage"],
+      stai_daarut_tauhiid()["mainImage"],
+      dome_eco_pesantren()["mainImage"],
+      masjid_daarut_tauhiid()["mainImage"],
+      masjid_besar_ciparay()["mainImage"],
+      perbaikan_masjid_cipaku()["mainImage"],
+      rumah_santri_karya_daarut_tauhiid()["mainImage"],
+      rumah_graha_bukit_raya()["mainImage"],
+      gedung_4_lantai_dt_peduli()["mainImage"],
+      gedung_pesantren_masa_keemasan()["mainImage"]
     ],
-    'IMAGE_MAIN_LANDSCAPE': [
-      masjidCianjur()['IMAGE_MAIN_LANDSCAPE'],
-      cluster_budi_asri()['IMAGE_MAIN_LANDSCAPE'],
-      stai_daarut_tauhiid()['IMAGE_MAIN_LANDSCAPE'],
-      dome_eco_pesantren()['IMAGE_MAIN_LANDSCAPE'],
-      masjid_daarut_tauhiid()['IMAGE_MAIN_LANDSCAPE'],
-      masjid_besar_ciparay()['IMAGE_MAIN_LANDSCAPE'],
-      perbaikan_masjid_cipaku()['IMAGE_MAIN_LANDSCAPE'],
-      rumah_santri_karya_daarut_tauhiid()['IMAGE_MAIN_LANDSCAPE'],
-      rumah_graha_bukit_raya()['IMAGE_MAIN_LANDSCAPE'],
-      gedung_4_lantai_dt_peduli()['IMAGE_MAIN_LANDSCAPE'],
-      gedung_pesantren_masa_keemasan()['IMAGE_MAIN_LANDSCAPE']
+    "mainImageLandscape": [
+      masjidCianjur()["mainImageLandscape"],
+      cluster_budi_asri()["mainImageLandscape"],
+      stai_daarut_tauhiid()["mainImageLandscape"],
+      dome_eco_pesantren()["mainImageLandscape"],
+      masjid_daarut_tauhiid()["mainImageLandscape"],
+      masjid_besar_ciparay()["mainImageLandscape"],
+      perbaikan_masjid_cipaku()["mainImageLandscape"],
+      rumah_santri_karya_daarut_tauhiid()["mainImageLandscape"],
+      rumah_graha_bukit_raya()["mainImageLandscape"],
+      gedung_4_lantai_dt_peduli()["mainImageLandscape"],
+      gedung_pesantren_masa_keemasan()["mainImageLandscape"]
     ],
-    'IMAGE_MAIN_PORTRAIT': [
-      masjidCianjur()['IMAGE_MAIN_PORTRAIT'],
-      cluster_budi_asri()['IMAGE_MAIN_PORTRAIT'],
-      stai_daarut_tauhiid()['IMAGE_MAIN_PORTRAIT'],
-      dome_eco_pesantren()['IMAGE_MAIN_PORTRAIT'],
-      masjid_daarut_tauhiid()['IMAGE_MAIN_PORTRAIT'],
-      masjid_besar_ciparay()['IMAGE_MAIN_PORTRAIT'],
-      perbaikan_masjid_cipaku()['IMAGE_MAIN_PORTRAIT'],
-      rumah_santri_karya_daarut_tauhiid()['IMAGE_MAIN_PORTRAIT'],
-      rumah_graha_bukit_raya()['IMAGE_MAIN_PORTRAIT'],
-      gedung_4_lantai_dt_peduli()['IMAGE_MAIN_PORTRAIT'],
-      gedung_pesantren_masa_keemasan()['IMAGE_MAIN_PORTRAIT']
+    "mainImagePortrait": [
+      masjidCianjur()["mainImagePortrait"],
+      cluster_budi_asri()["mainImagePortrait"],
+      stai_daarut_tauhiid()["mainImagePortrait"],
+      dome_eco_pesantren()["mainImagePortrait"],
+      masjid_daarut_tauhiid()["mainImagePortrait"],
+      masjid_besar_ciparay()["mainImagePortrait"],
+      perbaikan_masjid_cipaku()["mainImagePortrait"],
+      rumah_santri_karya_daarut_tauhiid()["mainImagePortrait"],
+      rumah_graha_bukit_raya()["mainImagePortrait"],
+      gedung_4_lantai_dt_peduli()["mainImagePortrait"],
+      gedung_pesantren_masa_keemasan()["mainImagePortrait"]
     ],
-    'PROJECT_NAME': [
-      masjidCianjur()['PROJECT_NAME'],
-      cluster_budi_asri()['PROJECT_NAME'],
-      stai_daarut_tauhiid()['PROJECT_NAME'],
-      dome_eco_pesantren()['PROJECT_NAME'],
-      masjid_daarut_tauhiid()['PROJECT_NAME'],
-      masjid_besar_ciparay()['PROJECT_NAME'],
-      perbaikan_masjid_cipaku()['PROJECT_NAME'],
-      rumah_santri_karya_daarut_tauhiid()['PROJECT_NAME'],
-      rumah_graha_bukit_raya()['PROJECT_NAME'],
-      gedung_4_lantai_dt_peduli()['PROJECT_NAME'],
-      gedung_pesantren_masa_keemasan()['PROJECT_NAME']
+    "name": [
+      masjidCianjur()["name"],
+      cluster_budi_asri()["name"],
+      stai_daarut_tauhiid()["name"],
+      dome_eco_pesantren()["name"],
+      masjid_daarut_tauhiid()["name"],
+      masjid_besar_ciparay()["name"],
+      perbaikan_masjid_cipaku()["name"],
+      rumah_santri_karya_daarut_tauhiid()["name"],
+      rumah_graha_bukit_raya()["name"],
+      gedung_4_lantai_dt_peduli()["name"],
+      gedung_pesantren_masa_keemasan()["name"]
     ],
-    'HIGHLIGHT': [
-      masjidCianjur()['HIGHLIGHT'],
-      cluster_budi_asri()['HIGHLIGHT'],
-      stai_daarut_tauhiid()['HIGHLIGHT'],
-      dome_eco_pesantren()['HIGHLIGHT'],
-      masjid_daarut_tauhiid()['HIGHLIGHT'],
-      masjid_besar_ciparay()['HIGHLIGHT'],
-      perbaikan_masjid_cipaku()['HIGHLIGHT'],
-      rumah_santri_karya_daarut_tauhiid()['HIGHLIGHT'],
-      rumah_graha_bukit_raya()['HIGHLIGHT'],
-      gedung_4_lantai_dt_peduli()['HIGHLIGHT'],
-      gedung_pesantren_masa_keemasan()['HIGHLIGHT']
+    "highlight": [
+      masjidCianjur()["highlight"],
+      cluster_budi_asri()["highlight"],
+      stai_daarut_tauhiid()["highlight"],
+      dome_eco_pesantren()["highlight"],
+      masjid_daarut_tauhiid()["highlight"],
+      masjid_besar_ciparay()["highlight"],
+      perbaikan_masjid_cipaku()["highlight"],
+      rumah_santri_karya_daarut_tauhiid()["highlight"],
+      rumah_graha_bukit_raya()["highlight"],
+      gedung_4_lantai_dt_peduli()["highlight"],
+      gedung_pesantren_masa_keemasan()["highlight"]
     ]
   };
 
   static Map<String, dynamic> masjidCianjur() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': 'masjid_cianjur',
-      'PROJECT_NAME': 'Proyek Rekonstruksi Masjid Cianjur',
-      'HIGHLIGHT':
-          'Pemulihan dan Rekonstruksi Masjid-masjid yang Terdampak Gempa',
-      'DESCRIPTION':
-          'Proyek ini bertujuan untuk membangun kembali masjid-masjid yang mengalami kerusakan serius akibat gempa di Cianjur. Kami berkomitmen untuk mengembalikan tempat ibadah yang aman dan nyaman bagi masyarakat setempat. Bantu kami mendukung rekonstruksi ini untuk memulihkan kehidupan masyarakat yang terdampak gempa.',
-      'PROJECT_OWNER': 'Masyarakat Kota Cianjur',
-      'KONTAK': '',
-      'IMAGE_MAIN': '$imageDir/masjid_cianjur/masjid_cianjur_landscape_047.jpg',
-      'IMAGE_MAIN_PORTRAIT':
-          '$imageDir/masjid_cianjur/masjid_cianjur_portrait_127.jpg',
-      'IMAGE_LIST_LANDSCAPE': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "year": "2022 - 2023 (On Going)",
+      "projectId": "masjid_cianjur",
+      "name": "Proyek Rekonstruksi Masjid Cianjur",
+      "location": "Cianjur, Jawa Barat",
+      "highlight":
+          "Pemulihan dan Rekonstruksi Masjid-masjid yang Terdampak Gempa",
+      "description":
+          "Proyek ini bertujuan untuk membangun kembali masjid-masjid yang mengalami kerusakan serius akibat gempa di Cianjur. Kami berkomitmen untuk mengembalikan tempat ibadah yang aman dan nyaman bagi masyarakat setempat. Bantu kami mendukung rekonstruksi ini untuk memulihkan kehidupan masyarakat yang terdampak gempa.",
+      "owner": "Masyarakat Kota Cianjur",
+      "contact": "+62222007134",
+      "mainImage": "$imageDir/masjid_cianjur/masjid_cianjur_landscape_047.jpg",
+      "mainImagePortrait":
+          "$imageDir/masjid_cianjur/masjid_cianjur_portrait_127.jpg",
+      "imageListLandscape": [
         for (int i = 1; i <= 241; i++)
-          '$imageDir/masjid_cianjur/masjid_cianjur_landscape_${i.toString().padLeft(3, '0')}.jpg',
+          "$imageDir/masjid_cianjur/masjid_cianjur_landscape_${i.toString().padLeft(3, "0")}.jpg",
       ],
-      'IMAGE_LIST_PORTRAIT': [
+      "imageListPortrait": [
         for (int i = 1; i <= 152; i++)
-          '$imageDir/masjid_cianjur/masjid_cianjur_portrait_${i.toString().padLeft(3, '0')}.jpg',
+          "$imageDir/masjid_cianjur/masjid_cianjur_portrait_${i.toString().padLeft(3, "0")}.jpg",
       ],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION':
-            'Proyek rekonstruksi masjid-masjid di Cianjur dihadapkan pada sejumlah tantangan serius, yang memerlukan solusi kreatif dan efisien. Berikut adalah gambaran tantangan dan solusi yang kami tawarkan:',
-        'LIST': [
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription":
+            "Proyek rekonstruksi masjid-masjid di Cianjur dihadapkan pada sejumlah tantangan serius, yang memerlukan solusi kreatif dan efisien. Berikut adalah gambaran tantangan dan solusi yang kami tawarkan:",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Tantangan: Kondisi jalan rusak - Akses ke lokasi proyek sangat sulit karena jalan rusak parah. Solusi: Kami menggunakan mobil yang disediakan oleh klien kami untuk dapat mengantarkan barang dan material bangunan, sehingga memastikan pasokan terus berjalan lancar meskipun kondisi jalan sulit.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Tantangan: Kerusakan wilayah - Gempa telah merusak sebagian besar wilayah, menyebabkan kesulitan dalam distribusi barang dan material. Solusi: Kami melakukan survei wilayah dengan teliti dan merencanakan rute terbaik untuk distribusi. Selain itu, kami bekerja sama dengan otoritas lokal untuk memperbaiki infrastruktur yang rusak.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Tantangan: Fasilitas kerja terbatas - Kami menghadapi kesulitan dalam menyediakan fasilitas kerja yang memadai di lokasi proyek. Solusi: Kami mendirikan kemah proyek yang dilengkapi dengan fasilitas lengkap untuk tim kami, termasuk tempat tinggal, dapur, dan area istirahat, sehingga tim kami dapat bekerja dengan efisien.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN': "Tantangan lainnya: ... - Solusi: ...",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poin": "Tantangan lainnya: ... - Solusi: ...",
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION':
-            'Lingkup pekerjaan ini mencakup berbagai tahapan dari survei lapangan hingga tahap finishing bangunan dalam proyek rekonstruksi masjid-masjid di Cianjur yang terdampak gempa.',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription":
+            "Lingkup pekerjaan ini mencakup berbagai tahapan dari survei lapangan hingga tahap finishing bangunan dalam proyek rekonstruksi masjid-masjid di Cianjur yang terdampak gempa.",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Survei Lapangan: Tim survei lapangan akan mengidentifikasi kerusakan pada masjid-masjid yang terkena dampak gempa, termasuk tingkat kerusakan dan kondisi struktur. Data ini akan menjadi dasar perencanaan rekonstruksi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pekerjaan Awal: Tahap ini melibatkan pemindahan material puing, pemagaran area, dan persiapan lahan. Selain itu, perizinan dan perencanaan teknis juga dilakukan pada tahap awal proyek.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pekerjaan Pembersihan: Pembersihan area rekonstruksi merupakan hal yang cukup sulit untuk dilakukan karena area menerima dampak kerusakan yang serius. Tim akan membersihkan puing, bahan berbahaya, dan mempersiapkan lahan untuk pembangunan kembali.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pembangunan Struktur: Tahap ini melibatkan konstruksi kembali bangunan masjid yang rusak. Ini mencakup pekerjaan pondasi, struktur utama, atap, dinding, dan fitur interior seperti lantai dan dinding dalam.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pekerjaan Finishing: Setelah pembangunan struktur selesai, tahap ini mencakup pekerjaan finishing seperti pengecatan, pemasangan lantai, dinding dalam, langit-langit, dan fitur-fitur dekoratif.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasangan Peralatan dan Perabotan: Dalam tahap ini, peralatan ibadah seperti mihrab, mimbar, lampu, serta perabotan seperti karpet dan kursi akan dipasang sesuai kebutuhan dan desain yang telah ditetapkan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Uji Coba dan Pemeriksaan Akhir: Sebelum masjid digunakan kembali, dilakukan uji coba dan pemeriksaan akhir untuk memastikan semua sistem, instalasi, dan keamanan memenuhi standar yang ditetapkan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      'LIST_OPT_3': {
-        'LIST_TITLE': 'Mitra Kerja & Vendor',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "listOpt3": {
+        "listTitle": "Mitra Kerja & Vendor",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "CV. Bersama: CV. Bersama adalah sebuah perusahaan yang bergerak dalam bidang Perencana Pembangunan Gedung dan Pengawas Pelaksanaan Konstruksi Bangunan. Perusahaan ini memiliki komitmen kuat untuk memberikan layanan berkualitas tinggi dalam perencanaan, perancangan, dan pengawasan pelaksanaan konstruksi bangunan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      'LIST_OPT_4': {
-        'LIST_TITLE': 'Testimoni Klien',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
-          {'POIN': "", 'POIN_IMAGE': '', 'POIN_VIDEO': ''},
+      "listOpt4": {
+        "listTitle": "Testimoni Klien",
+        "listDescription": "",
+        "list": [
+          {"poin": "", "poinImage": "", "poinVideo": ""},
         ],
       },
     };
@@ -212,106 +227,106 @@ class DataProjects {
 
   static Map<String, dynamic> cluster_budi_asri() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Cluster Budi Asri',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan 12 rumah di Cimahi Utara dengan konsep rumah minimalis untuk membentuk sebuah Cluster hunian yang modern dan nyaman.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Rumah Budi Asri adalah proyek pembangunan 12 rumah yang terletak di daerah Cimahi Utara. Proyek ini dirancang untuk membentuk sebuah Cluster dengan konsep rumah minimalis, menciptakan lingkungan hunian yang nyaman dan modern bagi para pemilik rumah.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN': '$imageDir/cluster_budi_asri/cluster_budi_asri_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Cluster Budi Asri",
+      "highlight":
+          "Proyek ini melibatkan pembangunan 12 rumah di Cimahi Utara dengan konsep rumah minimalis untuk membentuk sebuah Cluster hunian yang modern dan nyaman.",
+      "description":
+          "Proyek Pembangunan Rumah Budi Asri adalah proyek pembangunan 12 rumah yang terletak di daerah Cimahi Utara. Proyek ini dirancang untuk membentuk sebuah Cluster dengan konsep rumah minimalis, menciptakan lingkungan hunian yang nyaman dan modern bagi para pemilik rumah.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage": "$imageDir/cluster_budi_asri/cluster_budi_asri_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [
         for (int i = 1; i <= 241; i++)
-          '$imageDir/cluster_budi_asri/cluster_budi_asri_${i.toString().padLeft(3, '0')}.jpg',
+          "$imageDir/cluster_budi_asri/cluster_budi_asri_${i.toString().padLeft(3, "0")}.jpg",
       ],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Topografi Daerah: Daerah Cimahi Utara memiliki topografi yang tidak rata, sehingga memerlukan perataan lahan yang cermat. Melakukan survei topografi awal dan merancang penyesuaian lahan yang tepat dengan memanfaatkan teknik perataan dan penguatan lahan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Izin dan Regulasi: Mendapatkan izin konstruksi dan mematuhi peraturan daerah yang ketat. Mempekerjakan tim ahli hukum dan mengkomunikasikan dengan pihak berwenang untuk memastikan semua persyaratan izin terpenuhi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pasokan Material: Memastikan ketersediaan material konstruksi yang cukup untuk proyek dengan ukuran besar. Menyusun perencanaan logistik yang efisien, berkolaborasi dengan pemasok terpercaya, dan memiliki cadangan material.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Cuaca Ekstrem: Cuaca buruk dapat memperlambat kemajuan proyek. Menerapkan jadwal yang fleksibel, memiliki penutupan sementara untuk melindungi pekerjaan dari cuaca ekstrem, dan merencanakan aktivitas dalam jangka waktu yang lebih panjang.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Penggalian dan Persiapan Lahan: Mengekavasi dan meratakan lahan sesuai dengan rencana.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Struktur Bangunan: Membangun pondasi, struktur utama, dan kerangka rumah.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Finishing Interior dan Eksterior: Melakukan pemasangan bahan finishing seperti dinding, lantai, atap, dan penyelesaian interior seperti perabotan dan perangkat kamar mandi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Infrastruktur Cluster: Membangun infrastruktur cluster seperti jalan, taman, dan sistem keamanan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas dan Pengujian: Melakukan pengujian berkala untuk memastikan kualitas bangunan dan kelengkapan infrastruktur.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Izin dan Dokumentasi: Memproses semua izin dan dokumen yang diperlukan selama dan setelah konstruksi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasaran dan Penjualan: Mengelola pemasaran dan penjualan rumah-rumah dalam cluster kepada calon pembeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian kepada pemilik rumah yang telah membeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -320,100 +335,100 @@ class DataProjects {
 
   static Map<String, dynamic> stai_daarut_tauhiid() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Gedung Pendidikan STAI Daarut Tauhiid',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan gedung pendidikan 5 lantai untuk Sekolah Tinggi Agama Islam Daarut Tauhiid, menciptakan fasilitas modern bagi mahasiswa.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Gedung Pendidikan STAI Daarut Tauhiid adalah proyek konstruksi yang bertujuan membangun gedung pendidikan 5 lantai untuk kampus STAI Daarut Tauhiid. Gedung ini dirancang untuk menyediakan fasilitas pendidikan yang modern dan fungsional bagi mahasiswa, menciptakan lingkungan belajar yang berkualitas.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN': '$imageDir/stai/stai_022.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Gedung Pendidikan STAI Daarut Tauhiid",
+      "highlight":
+          "Proyek ini melibatkan pembangunan gedung pendidikan 5 lantai untuk Sekolah Tinggi Agama Islam Daarut Tauhiid, menciptakan fasilitas modern bagi mahasiswa.",
+      "description":
+          "Proyek Pembangunan Gedung Pendidikan STAI Daarut Tauhiid adalah proyek konstruksi yang bertujuan membangun gedung pendidikan 5 lantai untuk kampus STAI Daarut Tauhiid. Gedung ini dirancang untuk menyediakan fasilitas pendidikan yang modern dan fungsional bagi mahasiswa, menciptakan lingkungan belajar yang berkualitas.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage": "$imageDir/stai/stai_022.jpg",
+      "mainImagePortrait": "$imageDir/stai/stai_074.jpg",
+      "imageListLandscape": [
         for (int i = 1; i <= 241; i++)
-          '$imageDir/stai/stai_${i.toString().padLeft(3, '0')}.jpg',
+          "$imageDir/stai/stai_${i.toString().padLeft(3, "0")}.jpg",
       ],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Kebutuhan Fasilitas Pendidikan yang Komprehensif: Memastikan semua fasilitas pendidikan yang dibutuhkan seperti ruang kelas, perpustakaan, dan laboratorium memenuhi standar pendidikan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas Konstruksi yang Tinggi: Memastikan kualitas konstruksi yang tinggi untuk daya tahan jangka panjang.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Aksesibilitas: Membangun gedung yang mudah diakses oleh mahasiswa, termasuk yang memerlukan aksesibilitas khusus.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan dan Lingkungan: Memperhatikan faktor keamanan gedung dan praktik lingkungan yang sesuai.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Penggalian dan Persiapan Lahan: Mengekavasi dan meratakan lahan sesuai dengan rencana.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Struktur Bangunan: Membangun pondasi, struktur utama, dan kerangka gedung pendidikan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Finishing Interior dan Eksterior: Melakukan pemasangan bahan finishing seperti dinding, lantai, atap, dan penyelesaian interior seperti perabotan dan perangkat kamar mandi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Infrastruktur Kampus: Membangun infrastruktur kampus seperti jalan, taman, dan sistem keamanan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas dan Pengujian: Melakukan pengujian berkala untuk memastikan kualitas bangunan dan kelengkapan infrastruktur.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Izin dan Dokumentasi: Memproses semua izin dan dokumen yang diperlukan selama dan setelah konstruksi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian kepada pemilik gedung.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -422,98 +437,98 @@ class DataProjects {
 
   static Map<String, dynamic> dome_eco_pesantren() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Dome Eco Pesantren',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan Dome di Eco Pesantren yang akan diperuntukan menjadi lapangan indoor pesantren di Kab. Bandung Barat.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Dome Eco Pesantren adalah proyek konstruksi yang bertujuan membangun Dome di Eco Pesantren, yang akan diperuntukan menjadi lapangan indoor pesantren di Kab. Bandung Barat. Dome ini akan menjadi fasilitas yang berharga untuk aktivitas olahraga dan kegiatan pesantren.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Dome Eco Pesantren",
+      "highlight":
+          "Proyek ini melibatkan pembangunan Dome di Eco Pesantren yang akan diperuntukan menjadi lapangan indoor pesantren di Kab. Bandung Barat.",
+      "description":
+          "Proyek Pembangunan Dome Eco Pesantren adalah proyek konstruksi yang bertujuan membangun Dome di Eco Pesantren, yang akan diperuntukan menjadi lapangan indoor pesantren di Kab. Bandung Barat. Dome ini akan menjadi fasilitas yang berharga untuk aktivitas olahraga dan kegiatan pesantren.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Perencanaan Desain yang Tepat: Memastikan desain Dome sesuai dengan kebutuhan pesantren dan aktivitas olahraga yang akan dilakukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Penggunaan Material yang Ramah Lingkungan: Memilih material konstruksi yang ramah lingkungan sesuai dengan prinsip pesantren eco-friendly.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pengelolaan Sumber Daya Energi: Memaksimalkan penggunaan sumber daya energi terbarukan dalam operasional Dome.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Konstruksi: Memastikan keamanan selama proses pembangunan Dome, terutama dalam hal pengerjaan struktur atap.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang desain Dome yang sesuai dengan kebutuhan pesantren dan aktivitas olahraga.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Dome: Membangun struktur Dome yang kuat, termasuk atap dan fasilitas terkait.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasangan Material Ramah Lingkungan: Memilih dan memasang material konstruksi yang ramah lingkungan, seperti material atap yang dapat memanfaatkan energi matahari.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Infrastruktur Pesantren: Membangun infrastruktur di sekitar Dome, seperti akses jalan dan fasilitas pendukung.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Penggunaan Sumber Daya Energi Terbarukan: Memasang panel surya dan teknologi energi terbarukan untuk meminimalkan konsumsi energi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Proyek: Menyusun rencana keamanan yang komprehensif untuk menjaga keamanan selama proses konstruksi Dome.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan dan perawatan Dome untuk menjaga keberlanjutan fasilitas.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -522,104 +537,104 @@ class DataProjects {
 
   static Map<String, dynamic> masjid_daarut_tauhiid() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Masjid Daarut Tauhiid',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan masjid Daarut Tauhiid yang akan menjadi salah satu ikon dari pesantren Daarut Tauhiid karena memiliki desain modern.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Masjid Daarut Tauhiid adalah proyek konstruksi yang bertujuan membangun masjid yang akan menjadi salah satu ikon dari pesantren Daarut Tauhiid. Masjid ini memiliki desain yang modern dan unik, menciptakan tempat ibadah yang indah dan fungsional.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Masjid Daarut Tauhiid",
+      "highlight":
+          "Proyek ini melibatkan pembangunan masjid Daarut Tauhiid yang akan menjadi salah satu ikon dari pesantren Daarut Tauhiid karena memiliki desain modern.",
+      "description":
+          "Proyek Pembangunan Masjid Daarut Tauhiid adalah proyek konstruksi yang bertujuan membangun masjid yang akan menjadi salah satu ikon dari pesantren Daarut Tauhiid. Masjid ini memiliki desain yang modern dan unik, menciptakan tempat ibadah yang indah dan fungsional.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain yang Rumit: Membangun masjid dengan desain modern memerlukan perencanaan yang cermat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Penggunaan Material Kualitas Tinggi: Untuk mencapai estetika yang tinggi, diperlukan penggunaan material berkualitas tinggi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pengembangan Lokasi: Pembangunan masjid ini dapat memerlukan pengembangan infrastruktur dan fasilitas di sekitarnya.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Proyek: Memastikan keamanan baik untuk pekerja maupun pengunjung selama konstruksi dan setelahnya.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang desain masjid yang modern dan unik dan menyusun perencanaan konstruksi yang detail.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Masjid: Membangun bangunan masjid, termasuk struktur utama, kubah, dan menara.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Fasilitas dan Interior: Memasang fasilitas dalam masjid seperti mihrab, mimbar, karpet, dan pencahayaan yang indah.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemandangan dan Lanskap: Merancang pemandangan dan lanskap di sekitar masjid untuk menciptakan lingkungan yang indah dan damai.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Infrastruktur: Memastikan aksesibilitas yang baik ke masjid dengan membangun jalan akses, tempat parkir, dan fasilitas penunjang lainnya.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasangan Material Berkualitas Tinggi: Memilih dan memasang material konstruksi yang berkualitas tinggi seperti marmer dan batu.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Proyek dan Pekerja: Menyusun rencana keamanan yang komprehensif, memasang sistem keamanan yang canggih, dan memberikan pelatihan keamanan kepada pekerja.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan dan perawatan untuk menjaga masjid tetap dalam kondisi yang baik setelah penyelesaian proyek.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -628,98 +643,98 @@ class DataProjects {
 
   static Map<String, dynamic> masjid_besar_ciparay() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Masjid Besar Ciparay',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan Masjid Besar Kota Ciparay, yang pada akhirnya menjadi masjid ikon kota Ciparay karena desainnya yang mirip dengan Taj Mahal.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Masjid Besar Ciparay adalah proyek konstruksi yang bertujuan membangun masjid besar yang akan menjadi ikon kota Ciparay. Masjid ini memiliki desain yang khas, mirip dengan Taj Mahal, menciptakan tempat ibadah yang megah dan indah.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Masjid Besar Ciparay",
+      "highlight":
+          "Proyek ini melibatkan pembangunan Masjid Besar Kota Ciparay, yang pada akhirnya menjadi masjid ikon kota Ciparay karena desainnya yang mirip dengan Taj Mahal.",
+      "description":
+          "Proyek Pembangunan Masjid Besar Ciparay adalah proyek konstruksi yang bertujuan membangun masjid besar yang akan menjadi ikon kota Ciparay. Masjid ini memiliki desain yang khas, mirip dengan Taj Mahal, menciptakan tempat ibadah yang megah dan indah.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain yang Rumit: Membangun masjid dengan desain yang rumit dan mirip dengan Taj Mahal memerlukan keahlian desain dan konstruksi yang tinggi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Penggunaan Material Kualitas Tinggi: Untuk mencapai estetika yang tinggi, diperlukan penggunaan material berkualitas tinggi seperti marmer dan batu.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Konstruksi: Memastikan keamanan selama proses pembangunan, terutama dalam hal pengerjaan struktur atap yang kompleks.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Waktu dan Anggaran: Mengelola proyek dengan efisien sesuai waktu dan anggaran yang tersedia.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang desain yang rumit dan memastikan bahwa semua detail sesuai dengan Taj Mahal.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Masjid: Membangun struktur masjid yang megah, termasuk menara dan kubah yang mengesankan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasangan Material Berkualitas Tinggi: Memilih dan memasang material konstruksi yang berkualitas tinggi seperti marmer dan batu alam.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Keamanan Konstruksi: Menyusun rencana keamanan yang komprehensif untuk menjaga keamanan selama proses konstruksi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Waktu dan Anggaran: Memantau dan mengendalikan proyek agar sesuai dengan waktu dan anggaran yang ditentukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pelaporan dan Dokumentasi: Membuat laporan berkala tentang perkembangan proyek dan mendokumentasikan semua pekerjaan yang telah dilakukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk menjaga masjid dalam kondisi yang baik setelah selesai dibangun.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -728,104 +743,104 @@ class DataProjects {
 
   static Map<String, dynamic> perbaikan_masjid_cipaku() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Perbaikan Masjid Daarut Tauhiid Cipaku, Jakarta',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan perbaikan masjid Daarut Tauhiid yang berlokasi di Cipaku, Jakarta, untuk memastikan kondisi dan fasilitas masjid tetap terjaga.',
-      'DESCRIPTION':
-          'Proyek Perbaikan Masjid Daarut Tauhiid di Cipaku, Jakarta adalah proyek perbaikan dan pemeliharaan masjid yang berlokasi di Cipaku, Jakarta. Tujuan proyek ini adalah memastikan kondisi dan fasilitas masjid tetap terjaga dengan baik, sehingga pelayanan keagamaan dapat berjalan lancar.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Perbaikan Masjid Daarut Tauhiid Cipaku, Jakarta",
+      "highlight":
+          "Proyek ini melibatkan perbaikan masjid Daarut Tauhiid yang berlokasi di Cipaku, Jakarta, untuk memastikan kondisi dan fasilitas masjid tetap terjaga.",
+      "description":
+          "Proyek Perbaikan Masjid Daarut Tauhiid di Cipaku, Jakarta adalah proyek perbaikan dan pemeliharaan masjid yang berlokasi di Cipaku, Jakarta. Tujuan proyek ini adalah memastikan kondisi dan fasilitas masjid tetap terjaga dengan baik, sehingga pelayanan keagamaan dapat berjalan lancar.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Struktur dan Fasilitas: Menjaga kondisi bangunan dan fasilitas masjid yang sudah ada dengan perbaikan yang diperlukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemenuhan Standar Keamanan: Memastikan bahwa masjid memenuhi standar keamanan yang diperlukan dalam situasi darurat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konservasi dan Restorasi: Melakukan konservasi dan restorasi pada elemen-elemen bersejarah dalam masjid.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Waktu dan Anggaran Terbatas: Mengelola proyek dengan efisien sesuai waktu dan anggaran yang tersedia.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Pemeriksaan dan Evaluasi: Melakukan pemeriksaan dan evaluasi kondisi masjid untuk menentukan perbaikan yang diperlukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Perbaikan Struktur: Melakukan perbaikan pada struktur bangunan yang rusak atau lemah.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemulihan Fasilitas: Memulihkan fasilitas seperti perabotan, pencahayaan, dan audio visual.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Peningkatan Keamanan: Memasang sistem keamanan yang lebih baik, termasuk alarm kebakaran dan pemadam kebakaran.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konservasi Warisan: Melakukan konservasi pada elemen-elemen bersejarah dalam masjid, seperti ukiran dan kaligrafi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Waktu dan Anggaran: Memantau dan mengendalikan proyek agar sesuai dengan waktu dan anggaran yang ditentukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pelaporan dan Dokumentasi: Membuat laporan berkala tentang perkembangan proyek dan mendokumentasikan semua pekerjaan yang telah dilakukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk menjaga masjid dalam kondisi yang baik setelah perbaikan selesai.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -834,92 +849,92 @@ class DataProjects {
 
   static Map<String, dynamic> rumah_santri_karya_daarut_tauhiid() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Unit Rumah Santri Karya Daarut Tauhiid',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan unit-unit rumah di pegunungan Eco Pesantren Kab. Bandung Barat dengan konsep rumah minimalis Islami untuk kebutuhan santri Daarut Tauhiid.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Unit Rumah Santri Karya Daarut Tauhiid adalah proyek pembangunan unit-unit rumah yang terletak di pegunungan Eco Pesantren Kab. Bandung Barat. Rumah-rumah ini dirancang dengan konsep rumah minimalis Islami untuk memenuhi kebutuhan santri Daarut Tauhiid.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Unit Rumah Santri Karya Daarut Tauhiid",
+      "highlight":
+          "Proyek ini melibatkan pembangunan unit-unit rumah di pegunungan Eco Pesantren Kab. Bandung Barat dengan konsep rumah minimalis Islami untuk kebutuhan santri Daarut Tauhiid.",
+      "description":
+          "Proyek Pembangunan Unit Rumah Santri Karya Daarut Tauhiid adalah proyek pembangunan unit-unit rumah yang terletak di pegunungan Eco Pesantren Kab. Bandung Barat. Rumah-rumah ini dirancang dengan konsep rumah minimalis Islami untuk memenuhi kebutuhan santri Daarut Tauhiid.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Kondisi Pegunungan: Menghadapi kondisi geografis di pegunungan yang dapat menghambat proses konstruksi. Memanfaatkan teknik konstruksi yang sesuai dengan kondisi pegunungan dan perlindungan lingkungan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kebutuhan Santri: Memahami kebutuhan khusus santri dalam rumah minimalis Islami. Merancang rumah-rumah dengan fasilitas yang sesuai.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemilihan Material: Memilih material yang ramah lingkungan dan sesuai dengan prinsip rumah Islami.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Biaya: Memantau dan mengendalikan biaya agar sesuai dengan anggaran yang tersedia.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Pembangunan di Pegunungan: Membangun rumah-rumah di lingkungan pegunungan yang memerlukan teknik konstruksi khusus.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Desain Rumah Islami: Merancang rumah-rumah dengan prinsip-prinsip desain rumah Islami, termasuk fasilitas seperti ruang ibadah dan tata letak yang sesuai.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemilihan Material Ramah Lingkungan: Memilih material konstruksi yang ramah lingkungan dan sesuai dengan nilai-nilai Islami.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Biaya: Mengelola anggaran dengan cermat dan memastikan semua pekerjaan sesuai dengan rencana anggaran.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pelaporan dan Dokumentasi: Membuat laporan tentang perkembangan proyek dan mendokumentasikan semua pekerjaan yang telah dilakukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk pemilik rumah yang telah membeli unit.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -928,98 +943,98 @@ class DataProjects {
 
   static Map<String, dynamic> rumah_graha_bukit_raya() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Unit Rumah Graha Bukit Raya',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan unit-unit rumah di Graha Bukit Raya, Kab. Bandung Barat, dengan konsep rumah modern untuk menciptakan hunian yang nyaman dan fungsional.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Unit Rumah Graha Bukit Raya adalah proyek pembangunan unit-unit rumah yang terletak di Graha Bukit Raya, Kab. Bandung Barat. Proyek ini dirancang dengan konsep rumah modern untuk menciptakan hunian yang nyaman dan fungsional bagi pemilik rumah.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Unit Rumah Graha Bukit Raya",
+      "highlight":
+          "Proyek ini melibatkan pembangunan unit-unit rumah di Graha Bukit Raya, Kab. Bandung Barat, dengan konsep rumah modern untuk menciptakan hunian yang nyaman dan fungsional.",
+      "description":
+          "Proyek Pembangunan Unit Rumah Graha Bukit Raya adalah proyek pembangunan unit-unit rumah yang terletak di Graha Bukit Raya, Kab. Bandung Barat. Proyek ini dirancang dengan konsep rumah modern untuk menciptakan hunian yang nyaman dan fungsional bagi pemilik rumah.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain Hunian Modern: Menciptakan desain hunian modern yang sesuai dengan kebutuhan dan ekspektasi calon pembeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemilihan Material: Memilih material konstruksi yang berkualitas dan sesuai dengan konsep rumah modern.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Ketepatan Waktu: Mengelola proyek untuk memastikan ketepatan waktu dalam penyelesaian konstruksi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasaran dan Penjualan: Mengelola pemasaran dan penjualan unit-unit rumah kepada calon pembeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang desain rumah yang modern sesuai dengan permintaan calon pembeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Rumah: Membangun unit-unit rumah dengan struktur yang kokoh dan berkualitas.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasangan Material Berkualitas: Memilih dan memasang material konstruksi yang berkualitas tinggi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemasaran dan Penjualan: Mengelola pemasaran dan penjualan unit-unit rumah kepada calon pembeli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Waktu dan Anggaran: Memantau dan mengendalikan proyek agar sesuai dengan waktu dan anggaran yang ditentukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pelaporan dan Dokumentasi: Membuat laporan berkala tentang perkembangan proyek dan mendokumentasikan semua pekerjaan yang telah dilakukan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk pemilik rumah yang telah membeli unit.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -1028,92 +1043,92 @@ class DataProjects {
 
   static Map<String, dynamic> gedung_4_lantai_dt_peduli() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Gedung 4 Lantai DT Peduli',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan gedung kantor DT Peduli 4 lantai dengan desain modern yang unik.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Gedung 4 Lantai DT Peduli adalah proyek pembangunan gedung kantor sebanyak empat lantai untuk DT Peduli. Gedung ini memiliki desain modern yang unik dan dirancang untuk memberikan fasilitas yang sesuai dengan kebutuhan perusahaan.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Gedung 4 Lantai DT Peduli",
+      "highlight":
+          "Proyek ini melibatkan pembangunan gedung kantor DT Peduli 4 lantai dengan desain modern yang unik.",
+      "description":
+          "Proyek Pembangunan Gedung 4 Lantai DT Peduli adalah proyek pembangunan gedung kantor sebanyak empat lantai untuk DT Peduli. Gedung ini memiliki desain modern yang unik dan dirancang untuk memberikan fasilitas yang sesuai dengan kebutuhan perusahaan.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain Modern Unik: Menciptakan desain bangunan yang unik dan memenuhi ekspektasi perusahaan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Perizinan dan Regulasi: Mematuhi semua peraturan dan perizinan yang berkaitan dengan pembangunan gedung kantor.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemilihan Material: Memilih material konstruksi yang sesuai dengan desain modern dan berkualitas tinggi.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Anggaran: Mengelola anggaran proyek dengan cermat untuk memastikan pemenuhan semua kebutuhan fasilitas kantor.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang gedung kantor yang unik dan sesuai dengan kebutuhan DT Peduli.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Gedung: Membangun gedung empat lantai dengan perencanaan struktural yang kuat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Fasilitas Kantor: Menyediakan fasilitas kantor yang sesuai dengan kebutuhan perusahaan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas Konstruksi: Memastikan kualitas konstruksi dengan pengujian berkala dan pengawasan ketat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Perizinan dan Dokumentasi: Memproses semua perizinan yang diperlukan dan mendokumentasikan semua tahap pembangunan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk menjaga kondisi gedung yang baik setelah selesai dibangun.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -1122,92 +1137,92 @@ class DataProjects {
 
   static Map<String, dynamic> gedung_pesantren_masa_keemasan() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': 'Pembangunan Gedung Pesantren Masa Keemasan (PMK)',
-      'HIGHLIGHT':
-          'Proyek ini melibatkan pembangunan gedung 4 lantai yang diperuntukan bagi para manula untuk melakukan aktifitas belajar dan fasilitas asrama.',
-      'DESCRIPTION':
-          'Proyek Pembangunan Gedung Pesantren Masa Keemasan (PMK) adalah proyek pembangunan gedung empat lantai yang diperuntukan bagi para manula untuk melakukan aktifitas belajar dan fasilitas asrama. Gedung ini dirancang untuk memberikan fasilitas yang nyaman dan inklusif bagi para penghuni.',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN':
-          '$imageDir/model_images/construction_model_landscape_002.jpg',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "Pembangunan Gedung Pesantren Masa Keemasan (PMK)",
+      "highlight":
+          "Proyek ini melibatkan pembangunan gedung 4 lantai yang diperuntukan bagi para manula untuk melakukan aktifitas belajar dan fasilitas asrama.",
+      "description":
+          "Proyek Pembangunan Gedung Pesantren Masa Keemasan (PMK) adalah proyek pembangunan gedung empat lantai yang diperuntukan bagi para manula untuk melakukan aktifitas belajar dan fasilitas asrama. Gedung ini dirancang untuk memberikan fasilitas yang nyaman dan inklusif bagi para penghuni.",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage":
+          "$imageDir/model_images/construction_model_landscape_002.jpg",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain Inklusif: Merancang gedung yang inklusif dan ramah lansia dengan mempertimbangkan aksesibilitas dan fasilitas khusus.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Peraturan Bangunan: Mematuhi peraturan bangunan dan perizinan yang berkaitan dengan pembangunan fasilitas publik untuk manula.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas Konstruksi: Memastikan kualitas konstruksi yang tinggi untuk gedung empat lantai dengan perencanaan struktural yang kuat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kontrol Anggaran: Mengelola anggaran proyek dengan cermat untuk memastikan pemenuhan semua kebutuhan fasilitas.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
           {
-            'POIN':
+            "poin":
                 "Desain dan Perencanaan: Merancang gedung empat lantai dengan perencanaan yang inklusif dan memenuhi peraturan bangunan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Konstruksi Gedung: Membangun gedung empat lantai dengan struktur yang kuat dan aman untuk para manula.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Fasilitas Asrama: Menyediakan fasilitas asrama yang nyaman dan sesuai dengan kebutuhan penghuni.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Kualitas Konstruksi: Memastikan kualitas konstruksi dengan pengujian berkala dan pengawasan ketat.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Perizinan dan Dokumentasi: Memproses semua perizinan yang diperlukan dan mendokumentasikan semua tahap pembangunan.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
           {
-            'POIN':
+            "poin":
                 "Pemeliharaan Pasca-Penyelesaian: Menyediakan layanan pemeliharaan pasca-penyelesaian untuk menjaga kondisi gedung yang baik setelah selesai dibangun.",
-            'POIN_IMAGE': '',
-            'POIN_VIDEO': ''
+            "poinImage": "",
+            "poinVideo": ""
           },
         ],
       },
@@ -1216,32 +1231,32 @@ class DataProjects {
 
   static Map<String, dynamic> function1() {
     return {
-      'DATE_START': 'Senin, 01 Oktober 2023',
-      'DATE_END': 'Senin, 01 Oktober 2023',
-      'PROJECT_ID': '',
-      'PROJECT_NAME': '',
-      'HIGHLIGHT': '',
-      'DESCRIPTION': '',
-      'PROJECT_OWNER': '',
-      'KONTAK': '',
-      'IMAGE_MAIN': '',
-      'IMAGE_MAIN_PORTRAIT': '',
-      'IMAGE_LIST_LANDSCAPE': [],
-      'IMAGE_LIST_PORTRAIT': [],
-      // ======================================== LIST 1
-      'LIST_OPT_1': {
-        'LIST_TITLE': 'Tantangan & Solusi',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
-          {'POIN': "", 'POIN_IMAGE': '', 'POIN_VIDEO': ''},
+      "dateStart": "Senin, 01 Oktober 2023",
+      "dateEnd": "Senin, 01 Oktober 2023",
+      "projectId": "",
+      "name": "",
+      "highlight": "",
+      "description": "",
+      "owner": "",
+      "KONTAK": "",
+      "mainImage": "",
+      "mainImagePortrait": "",
+      "imageListLandscape": [],
+      "imageListPortrait": [],
+      // ======================================== list 1
+      "listOpt1": {
+        "listTitle": "Tantangan & Solusi",
+        "listDescription": "",
+        "list": [
+          {"poin": "", "poinImage": "", "poinVideo": ""},
         ],
       },
-      // ======================================== LIST 2
-      'LIST_OPT_2': {
-        'LIST_TITLE': 'Lingkup Pekerjaan',
-        'LIST_DESCRIPTION': '',
-        'LIST': [
-          {'POIN': "", 'POIN_IMAGE': '', 'POIN_VIDEO': ''},
+      // ======================================== list 2
+      "listOpt2": {
+        "listTitle": "Lingkup Pekerjaan",
+        "listDescription": "",
+        "list": [
+          {"poin": "", "poinImage": "", "poinVideo": ""},
         ],
       },
     };

@@ -1,5 +1,6 @@
 import 'package:gspdt/constants/constants.dart';
-import 'package:gspdt/pages/projects/projects_details.dart';
+import 'package:dartz/dartz.dart' as dartz;
+import 'package:gspdt/models/project_model.dart';
 
 class OurProjectsSection extends StatefulWidget {
   const OurProjectsSection({super.key});
@@ -9,7 +10,16 @@ class OurProjectsSection extends StatefulWidget {
 }
 
 class _OurProjectsSectionState extends State<OurProjectsSection> {
+  Future<dartz.Either<String, ListProjectModel>>? listProjectModel;
   bool en = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    listProjectModel = DbServices().fetchData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -38,42 +48,58 @@ class _OurProjectsSectionState extends State<OurProjectsSection> {
                       context: context,
                       en: en),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: StaggeredGrid.count(
-                crossAxisCount: isDesktop
-                    ? 3
-                    : isTablet
-                        ? 2
-                        : 1,
-                mainAxisSpacing: 4,
-                crossAxisSpacing: 4,
-                children: List.generate(
-                  isDesktop
-                      ? 6
-                      : isTablet
-                          ? 6
-                          : 4,
-                  (index) => StaggeredGridTile.count(
-                    crossAxisCellCount: 1,
-                    mainAxisCellCount: .8,
-                    child: InkWell(
-                      onTap: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => ProjectDetails(
-                              dataProject:
-                                  DataProjects.myProjectsList['NAME']![index]),
+            FutureBuilder(
+                future: listProjectModel,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.none) {
+                    return const Center(child: Text('Data Tidak Ditemukan'));
+                  } else if (snapshot.connectionState == ConnectionState.done) {
+                    final result = snapshot.data!.fold((l) => 'Data Not Exist',
+                        (r) => ListProjectModel(data: r.data));
+                    final response =
+                        result != String ? result as ListProjectModel : null;
+
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: StaggeredGrid.count(
+                        crossAxisCount: isDesktop
+                            ? 3
+                            : isTablet
+                                ? 2
+                                : 1,
+                        mainAxisSpacing: 4,
+                        crossAxisSpacing: 4,
+                        children: List.generate(
+                          isDesktop
+                              ? 5
+                              : isTablet
+                                  ? 4
+                                  : 4,
+                          (index) => StaggeredGridTile.count(
+                            crossAxisCellCount: 1,
+                            mainAxisCellCount: .8,
+                            child: InkWell(
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ProjectDetails(
+                                      project: response.data![index]),
+                                ),
+                              ),
+                              child: ProjectCard(
+                                project: response!.data![index],
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      child: ProjectCard(
-                        dataProject:
-                            DataProjects.myProjectsList['NAME']![index],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+                    );
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                }),
+            SizedBox(
+              height: 50.0,
+            )
           ],
         ),
       ),
@@ -97,7 +123,7 @@ Widget desktopTitleAndDesc(
                 // TITLE
                 SelectableText(
                   AppStrings(en: en).PROJECTS,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 32.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -111,7 +137,7 @@ Widget desktopTitleAndDesc(
                   width: screenWidth - 350,
                   child: SelectableText(
                     AppStrings(en: en).PROJECTS_OVERVIEW_DESCRIPTION,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16.0,
                       color: Colors.white,
                     ),
@@ -135,7 +161,7 @@ Widget desktopTitleAndDesc(
             // TITLE
             SelectableText(
               AppStrings(en: en).PROJECTS,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -149,7 +175,7 @@ Widget desktopTitleAndDesc(
               width: screenWidth,
               child: SelectableText(
                 AppStrings(en: en).OUR_SERVICE_DESCRIPTION,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   color: Colors.white,
                 ),
@@ -164,9 +190,9 @@ Widget desktopTitleAndDesc(
 }
 
 class ProjectCard extends StatelessWidget {
-  final Map<String, dynamic> dataProject;
+  final Datum project;
 
-  const ProjectCard({super.key, required this.dataProject});
+  const ProjectCard({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
@@ -177,8 +203,8 @@ class ProjectCard extends StatelessWidget {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: Image.asset(
-            dataProject['IMAGE_MAIN'],
+          child: Image.network(
+            '${AppStrings.API_ADDRESS}${project.attributes!.mainImage!.data!.attributes!.url!}',
             width: double.infinity,
             height: 200,
             fit: BoxFit.cover,
@@ -193,7 +219,7 @@ class ProjectCard extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0),
                   child: Text(
-                    dataProject['PROJECT_NAME'],
+                    project.attributes!.name!,
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -209,7 +235,7 @@ class ProjectCard extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 8.0, right: 8.0, top: 8.0, bottom: 16.0),
                   child: Text(
-                    dataProject['HIGHLIGHT'],
+                    project.attributes!.highlight!,
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,

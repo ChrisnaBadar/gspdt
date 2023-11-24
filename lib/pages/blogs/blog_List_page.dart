@@ -10,10 +10,10 @@ class BlogListPage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: customAppbar(parentWidth: screenWidth),
-      drawer: Drawer(child: CustomMobileHeader()),
+      drawer: const Drawer(child: CustomMobileHeader()),
       body: Stack(
         children: [
-          SingleChildScrollView(
+          const SingleChildScrollView(
             child: Column(
               children: [
                 //Banner
@@ -26,7 +26,7 @@ class BlogListPage extends StatelessWidget {
           ),
           screenWidth <= AppSizes.TABLET_SIZE
               ? Container()
-              : Positioned(
+              : const Positioned(
                   top: 0,
                   left: 0,
                   right: 0,

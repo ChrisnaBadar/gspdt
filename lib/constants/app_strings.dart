@@ -7,7 +7,7 @@ class AppStrings {
   //NAVIGATION
   String get HOME => en ? 'Home' : 'Beranda';
   String get PROJECTS => en ? 'Projects' : 'Proyek Kami';
-  String get ARTICLES => en ? 'Articles & Blogs' : 'Artikel & Blogs';
+  String get ARTICLES => en ? 'Articles' : 'Artikel';
   String get ABOUT_US => en ? 'About Us' : 'Tentang Kami';
   String get MENU => en ? 'Menu' : 'Menu';
   String get SERVICES => en ? 'Services' : 'Services';
@@ -21,11 +21,18 @@ class AppStrings {
 
   //PAGES STRINGS
   String get BLOG_HEADER => en ? 'ARTICLES' : 'ARTIKEL-ARTIKEL';
+  String get PORTOFOLIO_HEADER => en ? 'Portfolio' : 'Portofolio Pelaksana ';
+  String get PORTOFOLIO_SUBHEADER => en
+      ? ''
+      : 'Konstruksi Bangunan, Perencanaan Pembangunan dan Area Cleaning Service ';
+  String get PORTOFOLIO_DESCRIPTION => en
+      ? 'ARTICLES'
+      : 'Berikut ini adalah daftar portofolio untuk setiap proyek pekerjaan perusahaan dari mulai Perencanaan Design Gedung, Pelaksanaan Pembangunan Gedung dan Outsource Cleaning Service.';
 
   //COMPANY DATA
   String get COMPANY_NAME =>
       en ? 'PT. Global Solution Provider' : 'PT. Penyedia Solusi Global';
-  String get COMPANY_ABBREV => en ? 'PT. GSP' : 'PT. PSG';
+  String get COMPANY_ABBREV => en ? 'PT. GSP' : 'PT. GSP';
   String get SLOGAN => en ? 'Serving with Heart' : 'Melayani dengan hati';
   String get COMPANY_MAIL => en ? 'hrd@gspdt.co.id' : 'hrd@psgdt.co.id';
   String get AUTHOR_NAME => en ? 'Zatunur Studio' : 'Zatunur Studio';
@@ -88,6 +95,10 @@ class AppStrings {
       ? 'Integrated Sustainability: Our building planning incorporates sustainability principles for a greener and more sustainable future.'
       : 'Keberlanjutan Terpadu: Perencanaan gedung kami memasukkan prinsip-prinsip keberlanjutan untuk masa depan yang lebih hijau dan berkelanjutan.';
 
+  String get HADITH_INFAQ => en
+      ? "'There is not a single day when the servants of Allah enter the morning, except that two angels descend. Then one of them prays, 'O Allah, give compensation to those who spend in charity.' And the other angel prays, 'O Allah, bring loss to those who withhold their wealth.'' (Narrated by Bukhari and Muslim)."
+      : "Tidaklah ada suatu hari pun di mana hamba-hamba Allah masuk pada waktu pagi harinya, kecuali ada dua malaikat yang turun. Maka salah satu di antara mereka berdoa, “Ya Allah berikanlah ganti kepada orang-orang yang berinfak.” Dan malaikat yang lainnya berdoa, “Ya Allah berikanlah kerugian kepada orang-orang yang menahan hartanya” (HR. Bukhari dan Muslim).";
+
   static const String COMPANY_PHONE = '(022) 200 7134';
   static const String COMPANY_WHATSAPP = '+6281313023004';
   static const String COMPANY_FACEBOOK = 'ptgspdt';
@@ -95,5 +106,6 @@ class AppStrings {
   static const String COMPANY_INSTAGRAM = 'ptgspdt';
   static const String COMPANY_LINKEDIN = 'ptgspdt';
 
+  static const String API_ADDRESS = 'http://localhost:1337';
   //
 }
