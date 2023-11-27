@@ -1,6 +1,8 @@
 import 'package:gspdt/constants/constants.dart';
 import 'package:gspdt/models/fundraise_model.dart';
 import 'package:gspdt/pages/donation_page/donate_page.dart';
+import 'package:gspdt/pages/donation_page/donators_list.dart';
+import 'package:gspdt/pages/donation_page/fundraiser_detail.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -40,7 +42,6 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
 
   @override
   Widget build(BuildContext context) {
-    print(widget.data.id);
     return Scaffold(
       backgroundColor: AppThemes.secondaryColorLight.withOpacity(.2),
       body: Center(
@@ -110,8 +111,14 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  NumberFormat.currency(locale: "id_ID", symbol: "Rp. ")
-                      .format(int.parse(data.attributes!.collectedFund!)),
+                  NumberFormat.currency(locale: "id_ID", symbol: "Rp. ").format(
+                      data
+                          .attributes!.donations!.data!
+                          .where((e) =>
+                              e.attributes!.donationStatus! == "Diterima")
+                          .map((e) => int.parse(e.attributes!.nominal!))
+                          .toList()
+                          .reduce((v, e) => v + e)),
                   style: AppTextstyles(
                           font: "Montserrat",
                           fontSize: 14,
@@ -130,8 +137,13 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
           // //-------------- Second Row ---------------
           LinearPercentIndicator(
             lineHeight: 5,
-            percent: (int.parse(data.attributes!.collectedFund!) /
-                    int.parse(data.attributes!.collectedFund!))
+            percent: (data.attributes!.donations!.data!
+                        .where(
+                            (e) => e.attributes!.donationStatus! == "Diterima")
+                        .map((e) => int.parse(e.attributes!.nominal!))
+                        .toList()
+                        .reduce((v, e) => v + e) /
+                    int.parse(data.attributes!.targetDonation!))
                 .toDouble(),
             progressColor: AppThemes.primaryColorDark,
             backgroundColor: AppThemes.secondaryColorLight,
@@ -141,9 +153,14 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               TextButton(
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => DonatorsList(
+                                data: widget.data.attributes!.donations!.data!,
+                              ))),
                   child: Text(
-                    "${data.attributes!.jumlahDonatur} orang telah berdonasi",
+                    "${data.attributes!.donations!.data!.where((e) => e.attributes!.donationStatus! == "Diterima").length} orang telah berdonasi",
                     style: AppTextstyles(
                             font: "Montserrat",
                             fontSize: 14,
@@ -210,16 +227,19 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
                 .customTextDarkTheme(),
           ),
           ListTile(
-            leading: const CircleAvatar(),
+            leading: ClipOval(
+              child: Image.network(
+                  data.attributes!.fundraiser!.data!.attributes!.imageLink!),
+            ),
             title: Text(
-              data.attributes!.namaPenggalang!,
+              data.attributes!.fundraiser!.data!.attributes!.name!,
               style: AppTextstyles(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                       darkThemeTextColor: AppThemes.primaryColorDark)
                   .customTextDarkTheme(),
             ),
-            subtitle: data.attributes!.verified!
+            subtitle: data.attributes!.fundraiser!.data!.attributes!.verfied!
                 ? Row(
                     children: [
                       Icon(
@@ -258,6 +278,10 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
                       ),
                     ],
                   ),
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => FundraiserDetail())),
           )
         ],
       ),
@@ -279,9 +303,9 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
     List<TextSpan> textSpans = [];
 
     for (var paragraph in data.attributes!.description!) {
-      if (paragraph.type == 'paragraph') {
+      if (paragraph.type == DescriptionType.PARAGRAPH) {
         for (var child in paragraph.children!) {
-          if (child.type == 'text') {
+          if (child.type == ChildType.TEXT) {
             textSpans.add(TextSpan(
               text: '${child.text}\n',
               style: TextStyle(fontSize: 16.0), // Set your desired style
@@ -300,60 +324,39 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
             child: Text.rich(TextSpan(children: textSpans)),
           ),
         ),
-        _reportList()
+        SingleChildScrollView(
+            child: Container(
+                padding: const EdgeInsets.all(8), child: _reportList(data)))
       ],
     );
   }
 
-  Widget _reportList() {
+  Widget _reportList(ListFundraiseModelDatum data) {
     return ListView.builder(
-      itemCount: 1,
-      itemBuilder: (context, index) {
-        return Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Icon(Icons.circle),
-                  Container(
-                    width: 5,
-                    height: double.infinity,
-                    color: Colors.black,
-                  )
-                ],
-              ),
+      itemCount: data.attributes!.fundraiseReports!.data!.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) => Column(
+        children: [
+          ListTile(
+            leading: Container(
+              height: double.infinity,
+              color: Colors.black,
+              width: 2,
             ),
-            Expanded(
-              flex: 10,
-              child: Container(
-                padding: EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Judul Laporan"),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Text("Action Text"),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                        "Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text Description Text "),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      height: 240,
-                      decoration: BoxDecoration(border: Border.all()),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        );
-      },
+            title: Text(data
+                .attributes!.fundraiseReports!.data![index].attributes!.title!),
+            subtitle: Text(data.attributes!.fundraiseReports!.data![index]
+                .attributes!.createdAt!
+                .toString()),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+            child: Text(data.attributes!.fundraiseReports!.data![index]
+                .attributes!.description!),
+          )
+        ],
+      ),
     );
   }
 }

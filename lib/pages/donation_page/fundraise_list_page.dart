@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart' as dartz;
 import 'package:gspdt/constants/constants.dart';
 import 'package:gspdt/models/fundraise_model.dart';
+import 'package:intl/intl.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class FundraiseListPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
+        drawer: const Drawer(
           child: CustomMobileHeader(),
         ),
         backgroundColor: AppThemes.secondaryColorLight.withOpacity(.2),
@@ -31,7 +32,7 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
           children: [
             Center(
               child: Container(
-                padding: EdgeInsets.only(top: 100),
+                padding: const EdgeInsets.only(top: 100),
                 color: Colors.white,
                 width: screenWidth,
                 child: FutureBuilder(
@@ -73,7 +74,7 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
                   customAppbar(
                     parentWidth: screenWidth,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Text(
@@ -88,6 +89,13 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
   }
 
   Widget _itemsCard(ListFundraiseModelDatum donation) {
+    double percentage = donation.attributes!.donations!.data!
+            .where(
+                (donation) => donation.attributes?.donationStatus == "Diterima")
+            .map((donation) =>
+                double.tryParse(donation.attributes?.nominal ?? '') ?? 0.0)
+            .fold(0.0, (acc, amount) => acc + amount) /
+        num.tryParse(donation.attributes!.targetDonation!)!;
     return InkWell(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
@@ -106,18 +114,16 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
             StaggeredGridTile.count(
                 crossAxisCellCount: 1,
                 mainAxisCellCount: .8,
-                child: Container(
-                  child: Image.network(
-                    "${AppStrings.API_ADDRESS}${donation.attributes!.mainImage!.data!.attributes!.url!}",
-                    fit: BoxFit.cover,
-                    alignment: Alignment.centerLeft,
-                  ),
+                child: Image.network(
+                  "${AppStrings.API_ADDRESS}${donation.attributes!.mainImage!.data!.attributes!.url!}",
+                  fit: BoxFit.cover,
+                  alignment: Alignment.centerLeft,
                 )),
             StaggeredGridTile.count(
                 crossAxisCellCount: 2,
                 mainAxisCellCount: 1,
                 child: Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -131,19 +137,16 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
                                 fontWeight: FontWeight.bold)
                             .customTextDarkTheme(),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8.0,
                       ),
                       LinearPercentIndicator(
                         lineHeight: 5,
-                        percent: (int.parse(
-                                    donation.attributes!.collectedFund!) /
-                                int.parse(donation.attributes!.collectedFund!))
-                            .toDouble(),
+                        percent: percentage,
                         progressColor: AppThemes.primaryColorDark,
                         backgroundColor: AppThemes.secondaryColorLight,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8.0,
                       ),
                       Row(
@@ -163,7 +166,23 @@ class _FundraiseListPageState extends State<FundraiseListPage> {
                                     .customTextLightTheme(),
                               ),
                               Text(
-                                "Rp. ${donation.attributes!.collectedFund!.toString()}",
+                                NumberFormat.simpleCurrency(
+                                        locale: "id_ID",
+                                        name: 'IDR',
+                                        decimalDigits: 0)
+                                    .format(donation
+                                        .attributes!.donations!.data!
+                                        .where((donation) =>
+                                            donation
+                                                .attributes?.donationStatus ==
+                                            "Diterima")
+                                        .map((donation) =>
+                                            double.tryParse(
+                                                donation.attributes?.nominal ??
+                                                    '') ??
+                                            0.0)
+                                        .fold(0.0,
+                                            (acc, amount) => acc + amount)),
                                 style: AppTextstyles(
                                         font: "Poppins",
                                         fontSize: 14,

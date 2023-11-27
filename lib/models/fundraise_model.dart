@@ -62,36 +62,30 @@ class ListFundraiseModelDatum {
 class PurpleAttributes {
   String? title;
   String? targetDonation;
-  String? jumlahDonatur;
   DateTime? dateStart;
   DateTime? dateEnd;
-  String? namaPenggalang;
-  bool? verified;
   List<Description>? description;
-  Laporan? laporan;
   DateTime? createdAt;
   DateTime? updatedAt;
   DateTime? publishedAt;
-  String? collectedFund;
   MainImage? mainImage;
   Donations? donations;
+  FundraiseReports? fundraiseReports;
+  Fundraiser? fundraiser;
 
   PurpleAttributes({
     this.title,
     this.targetDonation,
-    this.jumlahDonatur,
     this.dateStart,
     this.dateEnd,
-    this.namaPenggalang,
-    this.verified,
     this.description,
-    this.laporan,
     this.createdAt,
     this.updatedAt,
     this.publishedAt,
-    this.collectedFund,
     this.mainImage,
     this.donations,
+    this.fundraiseReports,
+    this.fundraiser,
   });
 
   factory PurpleAttributes.fromRawJson(String str) =>
@@ -103,20 +97,15 @@ class PurpleAttributes {
       PurpleAttributes(
         title: json["title"],
         targetDonation: json["targetDonation"],
-        jumlahDonatur: json["jumlahDonatur"],
         dateStart: json["dateStart"] == null
             ? null
             : DateTime.parse(json["dateStart"]),
         dateEnd:
             json["dateEnd"] == null ? null : DateTime.parse(json["dateEnd"]),
-        namaPenggalang: json["namaPenggalang"],
-        verified: json["verified"],
         description: json["description"] == null
             ? []
             : List<Description>.from(
                 json["description"]!.map((x) => Description.fromJson(x))),
-        laporan:
-            json["laporan"] == null ? null : Laporan.fromJson(json["laporan"]),
         createdAt: json["createdAt"] == null
             ? null
             : DateTime.parse(json["createdAt"]),
@@ -126,35 +115,37 @@ class PurpleAttributes {
         publishedAt: json["publishedAt"] == null
             ? null
             : DateTime.parse(json["publishedAt"]),
-        collectedFund: json["collectedFund"],
         mainImage: json["mainImage"] == null
             ? null
             : MainImage.fromJson(json["mainImage"]),
         donations: json["donations"] == null
             ? null
             : Donations.fromJson(json["donations"]),
+        fundraiseReports: json["fundraise_reports"] == null
+            ? null
+            : FundraiseReports.fromJson(json["fundraise_reports"]),
+        fundraiser: json["fundraiser"] == null
+            ? null
+            : Fundraiser.fromJson(json["fundraiser"]),
       );
 
   Map<String, dynamic> toJson() => {
         "title": title,
         "targetDonation": targetDonation,
-        "jumlahDonatur": jumlahDonatur,
         "dateStart":
             "${dateStart!.year.toString().padLeft(4, '0')}-${dateStart!.month.toString().padLeft(2, '0')}-${dateStart!.day.toString().padLeft(2, '0')}",
         "dateEnd":
             "${dateEnd!.year.toString().padLeft(4, '0')}-${dateEnd!.month.toString().padLeft(2, '0')}-${dateEnd!.day.toString().padLeft(2, '0')}",
-        "namaPenggalang": namaPenggalang,
-        "verified": verified,
         "description": description == null
             ? []
             : List<dynamic>.from(description!.map((x) => x.toJson())),
-        "laporan": laporan?.toJson(),
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
         "publishedAt": publishedAt?.toIso8601String(),
-        "collectedFund": collectedFund,
         "mainImage": mainImage?.toJson(),
         "donations": donations?.toJson(),
+        "fundraise_reports": fundraiseReports?.toJson(),
+        "fundraiser": fundraiser?.toJson(),
       };
 }
 
@@ -281,7 +272,7 @@ class FluffyAttributes {
   DateTime? createdAt;
   DateTime? updatedAt;
   DateTime? publishedAt;
-  DonationStatus? donationStatus;
+  String? donationStatus;
 
   FluffyAttributes({
     this.nama,
@@ -314,7 +305,7 @@ class FluffyAttributes {
         publishedAt: json["publishedAt"] == null
             ? null
             : DateTime.parse(json["publishedAt"]),
-        donationStatus: donationStatusValues.map[json["donationStatus"]]!,
+        donationStatus: json["donationStatus"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -325,76 +316,232 @@ class FluffyAttributes {
         "createdAt": createdAt?.toIso8601String(),
         "updatedAt": updatedAt?.toIso8601String(),
         "publishedAt": publishedAt?.toIso8601String(),
-        "donationStatus": donationStatusValues.reverse[donationStatus],
+        "donationStatus": donationStatus,
       };
 }
 
-enum DonationStatus { DIPROSES }
+class FundraiseReports {
+  List<FundraiseReportsDatum>? data;
 
-final donationStatusValues = EnumValues({"Diproses": DonationStatus.DIPROSES});
-
-class Laporan {
-  List<Report>? report;
-
-  Laporan({
-    this.report,
+  FundraiseReports({
+    this.data,
   });
 
-  factory Laporan.fromRawJson(String str) => Laporan.fromJson(json.decode(str));
+  factory FundraiseReports.fromRawJson(String str) =>
+      FundraiseReports.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Laporan.fromJson(Map<String, dynamic> json) => Laporan(
-        report: json["report"] == null
+  factory FundraiseReports.fromJson(Map<String, dynamic> json) =>
+      FundraiseReports(
+        data: json["data"] == null
             ? []
-            : List<Report>.from(json["report"]!.map((x) => Report.fromJson(x))),
+            : List<FundraiseReportsDatum>.from(
+                json["data"]!.map((x) => FundraiseReportsDatum.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-        "report": report == null
+        "data": data == null
             ? []
-            : List<dynamic>.from(report!.map((x) => x.toJson())),
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
       };
 }
 
-class Report {
-  String? timestamp;
+class FundraiseReportsDatum {
+  int? id;
+  TentacledAttributes? attributes;
+
+  FundraiseReportsDatum({
+    this.id,
+    this.attributes,
+  });
+
+  factory FundraiseReportsDatum.fromRawJson(String str) =>
+      FundraiseReportsDatum.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory FundraiseReportsDatum.fromJson(Map<String, dynamic> json) =>
+      FundraiseReportsDatum(
+        id: json["id"],
+        attributes: json["attributes"] == null
+            ? null
+            : TentacledAttributes.fromJson(json["attributes"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "attributes": attributes?.toJson(),
+      };
+}
+
+class TentacledAttributes {
   String? title;
   String? action;
   String? description;
-  String? image;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  DateTime? publishedAt;
 
-  Report({
-    this.timestamp,
+  TentacledAttributes({
     this.title,
     this.action,
     this.description,
-    this.image,
+    this.createdAt,
+    this.updatedAt,
+    this.publishedAt,
   });
 
-  factory Report.fromRawJson(String str) => Report.fromJson(json.decode(str));
+  factory TentacledAttributes.fromRawJson(String str) =>
+      TentacledAttributes.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Report.fromJson(Map<String, dynamic> json) => Report(
-        timestamp: json["timestamp"],
+  factory TentacledAttributes.fromJson(Map<String, dynamic> json) =>
+      TentacledAttributes(
         title: json["title"],
         action: json["action"],
         description: json["description"],
-        image: json["image"],
+        createdAt: json["createdAt"] == null
+            ? null
+            : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null
+            ? null
+            : DateTime.parse(json["updatedAt"]),
+        publishedAt: json["publishedAt"] == null
+            ? null
+            : DateTime.parse(json["publishedAt"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "timestamp": timestamp,
         "title": title,
         "action": action,
         "description": description,
-        "image": image,
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+        "publishedAt": publishedAt?.toIso8601String(),
+      };
+}
+
+class Fundraiser {
+  FundraiserData? data;
+
+  Fundraiser({
+    this.data,
+  });
+
+  factory Fundraiser.fromRawJson(String str) =>
+      Fundraiser.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Fundraiser.fromJson(Map<String, dynamic> json) => Fundraiser(
+        data:
+            json["data"] == null ? null : FundraiserData.fromJson(json["data"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "data": data?.toJson(),
+      };
+}
+
+class FundraiserData {
+  int? id;
+  StickyAttributes? attributes;
+
+  FundraiserData({
+    this.id,
+    this.attributes,
+  });
+
+  factory FundraiserData.fromRawJson(String str) =>
+      FundraiserData.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory FundraiserData.fromJson(Map<String, dynamic> json) => FundraiserData(
+        id: json["id"],
+        attributes: json["attributes"] == null
+            ? null
+            : StickyAttributes.fromJson(json["attributes"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "attributes": attributes?.toJson(),
+      };
+}
+
+class StickyAttributes {
+  String? name;
+  String? description;
+  String? address;
+  String? phone;
+  String? email;
+  String? website;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  DateTime? publishedAt;
+  bool? verfied;
+  String? imageLink;
+
+  StickyAttributes({
+    this.name,
+    this.description,
+    this.address,
+    this.phone,
+    this.email,
+    this.website,
+    this.createdAt,
+    this.updatedAt,
+    this.publishedAt,
+    this.verfied,
+    this.imageLink,
+  });
+
+  factory StickyAttributes.fromRawJson(String str) =>
+      StickyAttributes.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory StickyAttributes.fromJson(Map<String, dynamic> json) =>
+      StickyAttributes(
+        name: json["name"],
+        description: json["description"],
+        address: json["address"],
+        phone: json["phone"],
+        email: json["email"],
+        website: json["website"],
+        createdAt: json["createdAt"] == null
+            ? null
+            : DateTime.parse(json["createdAt"]),
+        updatedAt: json["updatedAt"] == null
+            ? null
+            : DateTime.parse(json["updatedAt"]),
+        publishedAt: json["publishedAt"] == null
+            ? null
+            : DateTime.parse(json["publishedAt"]),
+        verfied: json["verfied"],
+        imageLink: json["imageLink"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "description": description,
+        "address": address,
+        "phone": phone,
+        "email": email,
+        "website": website,
+        "createdAt": createdAt?.toIso8601String(),
+        "updatedAt": updatedAt?.toIso8601String(),
+        "publishedAt": publishedAt?.toIso8601String(),
+        "verfied": verfied,
+        "imageLink": imageLink,
       };
 }
 
 class MainImage {
-  Data? data;
+  MainImageData? data;
 
   MainImage({
     this.data,
@@ -406,7 +553,8 @@ class MainImage {
   String toRawJson() => json.encode(toJson());
 
   factory MainImage.fromJson(Map<String, dynamic> json) => MainImage(
-        data: json["data"] == null ? null : Data.fromJson(json["data"]),
+        data:
+            json["data"] == null ? null : MainImageData.fromJson(json["data"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -414,24 +562,25 @@ class MainImage {
       };
 }
 
-class Data {
+class MainImageData {
   int? id;
-  DataAttributes? attributes;
+  IndigoAttributes? attributes;
 
-  Data({
+  MainImageData({
     this.id,
     this.attributes,
   });
 
-  factory Data.fromRawJson(String str) => Data.fromJson(json.decode(str));
+  factory MainImageData.fromRawJson(String str) =>
+      MainImageData.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
+  factory MainImageData.fromJson(Map<String, dynamic> json) => MainImageData(
         id: json["id"],
         attributes: json["attributes"] == null
             ? null
-            : DataAttributes.fromJson(json["attributes"]),
+            : IndigoAttributes.fromJson(json["attributes"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -440,7 +589,7 @@ class Data {
       };
 }
 
-class DataAttributes {
+class IndigoAttributes {
   String? name;
   dynamic alternativeText;
   dynamic caption;
@@ -458,7 +607,7 @@ class DataAttributes {
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  DataAttributes({
+  IndigoAttributes({
     this.name,
     this.alternativeText,
     this.caption,
@@ -477,12 +626,13 @@ class DataAttributes {
     this.updatedAt,
   });
 
-  factory DataAttributes.fromRawJson(String str) =>
-      DataAttributes.fromJson(json.decode(str));
+  factory IndigoAttributes.fromRawJson(String str) =>
+      IndigoAttributes.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory DataAttributes.fromJson(Map<String, dynamic> json) => DataAttributes(
+  factory IndigoAttributes.fromJson(Map<String, dynamic> json) =>
+      IndigoAttributes(
         name: json["name"],
         alternativeText: json["alternativeText"],
         caption: json["caption"],
