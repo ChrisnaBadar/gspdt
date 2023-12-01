@@ -3,6 +3,7 @@ import 'package:gspdt/models/fundraise_model.dart';
 import 'package:gspdt/pages/donation_page/donate_page.dart';
 import 'package:gspdt/pages/donation_page/donators_list.dart';
 import 'package:gspdt/pages/donation_page/fundraiser_detail.dart';
+import 'package:gspdt/widgets/custom_button.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -57,18 +58,28 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
 
                   //TITLE
                   SliverToBoxAdapter(child: _title(widget.data)),
+                  SliverToBoxAdapter(
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Divider(),
+                  )),
 
                   //Column of donation bar
                   SliverToBoxAdapter(child: _donationProgreeBar(widget.data)),
 
                   //DONATE BUTTON
                   SliverToBoxAdapter(child: _donationButton(widget.data)),
+                  SliverToBoxAdapter(
+                      child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Divider(),
+                  )),
 
                   //FUNDRAISER LISTTILE
                   SliverToBoxAdapter(child: _fundraiser(widget.data)),
 
                   //ABOUT & REPORT TABS
-                  SliverToBoxAdapter(child: _tabsHeader(widget.data))
+                  SliverToBoxAdapter(child: _tabsHeader(widget.data)),
                 ];
               },
               body: _tabsItems(widget.data)),
@@ -105,10 +116,25 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
       child: Column(
         children: [
           //========= First Row =========
+
+          // //-------------- Second Row ---------------
+          LinearPercentIndicator(
+            lineHeight: 5,
+            percent: (data.attributes!.donations!.data!
+                        .where(
+                            (e) => e.attributes!.donationStatus! == "Diterima")
+                        .map((e) => int.parse(e.attributes!.nominal!))
+                        .toList()
+                        .reduce((v, e) => v + e) /
+                    int.parse(data.attributes!.targetDonation!))
+                .toDouble(),
+            progressColor: AppThemes.primaryColorDark,
+            backgroundColor: AppThemes.secondaryColorLight,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   NumberFormat.currency(locale: "id_ID", symbol: "Rp. ").format(
@@ -126,27 +152,13 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
                       .customTextDarkTheme(),
                 ),
                 Text(
-                  "dari ${NumberFormat.currency(locale: "id_ID", symbol: "Rp.").format(int.parse(data.attributes!.targetDonation!))}",
+                  " dari ${NumberFormat.currency(locale: "id_ID", symbol: "Rp.").format(int.parse(data.attributes!.targetDonation!))}",
                   style: AppTextstyles(
                           font: "Montserrat", fontSize: 12, myOpacity: .5)
                       .customTextDarkTheme(),
                 )
               ],
             ),
-          ),
-          // //-------------- Second Row ---------------
-          LinearPercentIndicator(
-            lineHeight: 5,
-            percent: (data.attributes!.donations!.data!
-                        .where(
-                            (e) => e.attributes!.donationStatus! == "Diterima")
-                        .map((e) => int.parse(e.attributes!.nominal!))
-                        .toList()
-                        .reduce((v, e) => v + e) /
-                    int.parse(data.attributes!.targetDonation!))
-                .toDouble(),
-            progressColor: AppThemes.primaryColorDark,
-            backgroundColor: AppThemes.secondaryColorLight,
           ),
           // //========= Third Row =========
           Row(
@@ -167,18 +179,7 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
                             darkThemeTextColor: AppThemes.accentTextLight,
                             fontWeight: FontWeight.bold)
                         .customTextDarkTheme(),
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: Text(
-                  "${data.attributes!.dateEnd!.difference(data.attributes!.dateStart!).inDays} Hari lagi",
-                  style: AppTextstyles(
-                          font: "Poppins",
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold)
-                      .customTextDarkTheme(),
-                ),
-              )
+                  ))
             ],
           )
         ],
@@ -190,25 +191,13 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       width: screenWidth,
-      child: ElevatedButton(
-        onPressed: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => DonatePage(data: data),
-          ),
-        ),
-        style: ElevatedButton.styleFrom(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5))),
-            backgroundColor: AppThemes.secondaryColorDark),
-        child: Text(
-          "INFAQ SEKARANG",
-          style: AppTextstyles(
-                  font: "Poppins",
-                  darkThemeTextColor: AppThemes.secondaryTextDark,
-                  fontWeight: FontWeight.bold)
-              .customTextDarkTheme(),
-        ),
-      ),
+      child: CustomButton(
+          onPressed: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => DonatePage(data: data),
+                ),
+              ),
+          text: 'Infaq'),
     );
   }
 
@@ -219,7 +208,7 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Penggalang Dana",
+            "Digalang oleh: ",
             style: AppTextstyles(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -239,49 +228,14 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
                       darkThemeTextColor: AppThemes.primaryColorDark)
                   .customTextDarkTheme(),
             ),
-            subtitle: data.attributes!.fundraiser!.data!.attributes!.verfied!
-                ? Row(
-                    children: [
-                      Icon(
-                        Icons.check_circle_outline,
-                        color: Colors.green,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "Verified",
-                        style: AppTextstyles(
-                                fontSize: 14,
-                                darkThemeTextColor: AppThemes.primaryColorDark,
-                                myOpacity: .3)
-                            .customTextDarkTheme(),
-                      ),
-                    ],
-                  )
-                : Row(
-                    children: [
-                      Icon(
-                        Icons.question_answer_sharp,
-                        color: Colors.grey,
-                      ),
-                      SizedBox(
-                        width: 8,
-                      ),
-                      Text(
-                        "Not Verified",
-                        style: AppTextstyles(
-                                fontSize: 14,
-                                darkThemeTextColor: AppThemes.primaryColorDark,
-                                myOpacity: .3)
-                            .customTextDarkTheme(),
-                      ),
-                    ],
-                  ),
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => FundraiserDetail())),
+            subtitle: Text(
+              data.attributes!.fundraiser!.data!.attributes!.email!,
+              style: AppTextstyles(
+                      font: "Poppins",
+                      fontSize: 12,
+                      lightThemeTextColor: AppThemes.secondaryTextLight)
+                  .customTextLightTheme(),
+            ),
           )
         ],
       ),
@@ -336,27 +290,70 @@ class _FundraiseDetailsState extends State<FundraiseDetails>
       itemCount: data.attributes!.fundraiseReports!.data!.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) => Column(
-        children: [
-          ListTile(
-            leading: Container(
-              height: double.infinity,
-              color: Colors.black,
-              width: 2,
+      itemBuilder: (context, index) {
+        final title =
+            data.attributes!.fundraiseReports!.data![index].attributes!.title;
+        final description = data
+            .attributes!.fundraiseReports!.data![index].attributes!.description;
+        final action =
+            data.attributes!.fundraiseReports!.data![index].attributes!.action;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+              leading: Container(
+                height: double.infinity,
+                color: Colors.black,
+                width: 2,
+              ),
+              title: Text(
+                title ?? '',
+                style: AppTextstyles(
+                        font: "Poppins",
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        lightThemeTextColor: AppThemes.secondaryTextLight)
+                    .customTextLightTheme(),
+              ),
+              subtitle: Text(
+                data.attributes!.fundraiseReports!.data![index].attributes!
+                    .createdAt!
+                    .toString(),
+                style: AppTextstyles(
+                        font: "Poppins",
+                        fontSize: 12,
+                        lightThemeTextColor: AppThemes.accentTextLight)
+                    .customTextLightTheme(),
+              ),
             ),
-            title: Text(data
-                .attributes!.fundraiseReports!.data![index].attributes!.title!),
-            subtitle: Text(data.attributes!.fundraiseReports!.data![index]
-                .attributes!.createdAt!
-                .toString()),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-            child: Text(data.attributes!.fundraiseReports!.data![index]
-                .attributes!.description!),
-          )
-        ],
-      ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+              child: Text(
+                action ?? '',
+                textAlign: TextAlign.start,
+                style: AppTextstyles(
+                        font: "Poppins",
+                        fontSize: 12,
+                        lightThemeTextColor: AppThemes.primaryTextLight)
+                    .customTextLightTheme(),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+              child: Text(
+                description ?? '',
+                style: AppTextstyles(
+                        font: "Poppins",
+                        fontSize: 12,
+                        lightThemeTextColor: AppThemes.primaryTextLight)
+                    .customTextLightTheme(),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }

@@ -10,22 +10,89 @@ class DonatorsList extends StatefulWidget {
 }
 
 class _DonatorsListState extends State<DonatorsList> {
+  double screenWidth = 480.0;
   @override
   Widget build(BuildContext context) {
-    final donatedPeople = widget.data
+    final result = widget.data
+      ..sort((a, b) =>
+          b.attributes!.createdAt!.compareTo(a.attributes!.createdAt!));
+    final donatedPeople = result
         .where((e) => e.attributes!.donationStatus == "Diterima")
         .toList();
-    final result = donatedPeople.map((e) => e.attributes!.nominal).toList();
-    print(result);
     return Scaffold(
-      body: ListView.builder(
-        itemCount: donatedPeople.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(donatedPeople[index].attributes!.nama!),
-            subtitle: Text("Rp. ${donatedPeople[index].attributes!.nominal!}"),
-          );
-        },
+      body: Center(
+        child: Container(
+          width: screenWidth,
+          child: ListView.builder(
+            itemCount: donatedPeople.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        child: Icon(Icons.person),
+                      ),
+                      title: Text(
+                        donatedPeople[index].attributes!.nama!,
+                        style: AppTextstyles(
+                                font: "Poppins",
+                                fontSize: 18,
+                                lightThemeTextColor: AppThemes.accentTextDark,
+                                fontWeight: FontWeight.bold)
+                            .customTextLightTheme(),
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Rp. ${donatedPeople[index].attributes!.nominal!}",
+                            style: AppTextstyles(
+                                    font: "Roboto",
+                                    fontSize: 14,
+                                    lightThemeTextColor:
+                                        AppThemes.primaryTextLight)
+                                .customTextLightTheme(),
+                          ),
+                          DateTime.now()
+                                      .difference(donatedPeople[index]
+                                          .attributes!
+                                          .createdAt!)
+                                      .inMinutes <
+                                  60
+                              ? Text(
+                                  "${DateTime.now().difference(donatedPeople[index].attributes!.createdAt!).inMinutes} Menit yang lalu")
+                              : DateTime.now()
+                                          .difference(donatedPeople[index]
+                                              .attributes!
+                                              .createdAt!)
+                                          .inDays ==
+                                      0
+                                  ? Text(
+                                      "${DateTime.now().difference(donatedPeople[index].attributes!.createdAt!).inHours} Jam yang lalu")
+                                  : Text(
+                                      "${DateTime.now().difference(donatedPeople[index].attributes!.createdAt!).inDays} Hari yang lalu")
+                        ],
+                      ),
+                    ),
+                    Text(
+                      donatedPeople[index].attributes!.pesan!,
+                      textAlign: TextAlign.start,
+                      style: AppTextstyles(
+                              font: "Roboto",
+                              fontSize: 14,
+                              lightThemeTextColor: AppThemes.accentTextLight)
+                          .customTextLightTheme(),
+                    ),
+                    Divider()
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }

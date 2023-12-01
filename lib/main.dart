@@ -1,5 +1,5 @@
 import 'package:gspdt/constants/constants.dart';
-import 'package:gspdt/pages/donation_page/donate_page.dart';
+import 'package:gspdt/constants/routes.dart';
 
 bool testMode = false;
 
@@ -14,12 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: AppStrings(en: false).COMPANY_NAME,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const FundraiseListPage(),
+      routes: AppRoutes().routes,
     );
   }
 }
