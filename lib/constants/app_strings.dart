@@ -106,6 +106,6 @@ class AppStrings {
   static const String COMPANY_INSTAGRAM = 'ptgspdt';
   static const String COMPANY_LINKEDIN = 'ptgspdt';
 
-  static const String API_ADDRESS = 'http://localhost:1337';
+  static const String API_ADDRESS = 'http://85.31.233.113:1337';
   //
 }

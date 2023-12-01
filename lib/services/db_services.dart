@@ -7,8 +7,8 @@ import 'package:gspdt/models/project_model.dart';
 
 class DbServices {
   Future<Either<String, ListProjectModel>> fetchData() async {
-    final result =
-        await get(Uri.parse("http://localhost:1337/api/projects?populate=*"));
+    final result = await get(
+        Uri.parse("http://85.31.233.113:1337/api/projects?populate=*"));
 
     if (result.statusCode == 200) {
       return Right(ListProjectModel.fromRawJson(result.body));
@@ -18,8 +18,8 @@ class DbServices {
   }
 
   Future<Either<String, ListArticleModel>> fetchArticleData() async {
-    final result =
-        await get(Uri.parse("http://localhost:1337/api/articles?populate=*"));
+    final result = await get(
+        Uri.parse("http://85.31.233.113:1337/api/articles?populate=*"));
 
     if (result.statusCode == 200) {
       return Right(ListArticleModel.fromRawJson(result.body));
@@ -29,8 +29,8 @@ class DbServices {
   }
 
   Future<Either<String, ListFundraiseModel>> fetchFundraiseData() async {
-    final result =
-        await get(Uri.parse("http://localhost:1337/api/fundraises?populate=*"));
+    final result = await get(
+        Uri.parse("http://85.31.233.113:1337/api/fundraises?populate=*"));
 
     if (result.statusCode == 200) {
       return Right(ListFundraiseModel.fromRawJson(result.body));
@@ -40,8 +40,8 @@ class DbServices {
   }
 
   Future<Either<String, DonatesListModel>> fetchDonateData() async {
-    final result =
-        await get(Uri.parse("http://localhost:1337/api/donations?populate=*"));
+    final result = await get(
+        Uri.parse("http://85.31.233.113:1337/api/donations?populate=*"));
 
     if (result.statusCode == 200) {
       return Right(DonatesListModel.fromRawJson(result.body));
@@ -58,7 +58,7 @@ class DbServices {
       required int id}) async {
     var headers = {'Content-Type': 'application/json'};
     var request =
-        Request('POST', Uri.parse('http://localhost:1337/api/donations'));
+        Request('POST', Uri.parse('http://85.31.233.113:1337/api/donations'));
     request.body = json.encode({
       "data": {
         "nama": nama,
