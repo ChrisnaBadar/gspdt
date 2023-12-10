@@ -34,13 +34,7 @@ class _CustomHeaderState extends State<CustomHeader> {
               children: <Widget>[
                 MenuItem(
                   text: AppStrings(en: en).HOME,
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const Homepage(),
-                      ),
-                    );
-                  },
+                  onPressed: () => Navigator.pushNamed(context, '/'),
                 ),
                 MenuItem(
                   text: AppStrings(en: en).PROJECTS,
@@ -64,13 +58,8 @@ class _CustomHeaderState extends State<CustomHeader> {
                 ),
                 MenuItem(
                     text: AppStrings(en: en).ARTICLES,
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const BlogListPage(),
-                        ),
-                      );
-                    })
+                    onPressed: () =>
+                        Navigator.pushNamed(context, '/blogListPage'))
               ],
             ),
           ),
